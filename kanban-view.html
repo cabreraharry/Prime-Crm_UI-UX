@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate CRM - Kanban View</title>
+    <meta name="description" content="View your contacts in a kanban board organized by type.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body class="app-body">
+    <div class="grid-view-layout">
+        <!-- Left Sidebar -->
+        <aside class="grid-sidebar">
+            <div class="grid-sidebar-header">
+                <button class="grid-sidebar-create">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                    Create new...
+                </button>
+            </div>
+            <div class="grid-sidebar-search">
+                <input type="text" placeholder="Find a view">
+            </div>
+            <div class="grid-sidebar-views">
+                <a href="grid-view.html" class="view-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <path d="M3 9h18M9 21V9" />
+                    </svg>
+                    Grid view
+                </a>
+                <a href="kanban-view.html" class="view-item active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="4" y="4" width="6" height="16" rx="1" />
+                        <rect x="14" y="4" width="6" height="10" rx="1" />
+                    </svg>
+                    Kanban
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Area -->
+        <div class="grid-main">
+            <!-- Grid Header -->
+            <div class="grid-header">
+                <div class="grid-header-left">
+                    <a href="workspace.html" class="back-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                    </a>
+                    <div class="grid-title">
+                        <div class="grid-title-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                        </div>
+                        <h2>Real Estate CRM</h2>
+                    </div>
+                </div>
+                <div class="grid-header-right">
+                    <button class="btn btn-secondary btn-sm">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                        </svg>
+                        Connect GHL
+                    </button>
+                    <button class="btn btn-ghost btn-sm">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Export
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="grid-nav-tabs">
+                <a href="grid-view.html" class="grid-nav-tab active">Data</a>
+                <a href="automations.html" class="grid-nav-tab">Automations</a>
+                <a href="#" class="grid-nav-tab">Documents</a>
+            </div>
+
+            <!-- Kanban Toolbar -->
+            <div class="kanban-header">
+                <button class="toolbar-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+                    </svg>
+                    Filter
+                </button>
+                <button class="toolbar-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="4" y1="9" x2="20" y2="9" />
+                        <line x1="4" y1="15" x2="20" y2="15" />
+                        <line x1="10" y1="3" x2="8" y2="21" />
+                        <line x1="16" y1="3" x2="14" y2="21" />
+                    </svg>
+                    Sorted by 1 field
+                </button>
+                <button class="toolbar-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="18" cy="5" r="3" />
+                        <circle cx="6" cy="12" r="3" />
+                        <circle cx="18" cy="19" r="3" />
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+                    </svg>
+                    Share and sync
+                </button>
+                <div class="kanban-filter" style="margin-left: auto;">
+                    <span>Stacked by:</span>
+                    <button class="btn btn-secondary btn-sm">
+                        Type
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="toolbar-search">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="M21 21l-4.35-4.35" />
+                    </svg>
+                    <input type="text" placeholder="Search records...">
+                </div>
+                <span class="text-sm text-muted">3 contacts</span>
+            </div>
+
+            <!-- Kanban Board -->
+            <div class="kanban-container">
+                <div class="kanban-board">
+                    <!-- No Data Column -->
+                    <div class="kanban-column">
+                        <div class="kanban-column-header">
+                            <div class="kanban-column-title">
+                                <span class="kanban-dot kanban-dot-gray"></span>
+                                <span class="kanban-column-name">No data</span>
+                                <span class="kanban-count">1</span>
+                            </div>
+                        </div>
+                        <div class="kanban-cards">
+                            <button class="kanban-add-card">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                                Add contact
+                            </button>
+                            <div class="kanban-empty">
+                                <p>No contacts yet</p>
+                                <p class="text-xs">Drag contacts here or click "Add contact"</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Buyer Column -->
+                    <div class="kanban-column">
+                        <div class="kanban-column-header">
+                            <div class="kanban-column-title">
+                                <span class="kanban-dot kanban-dot-blue"></span>
+                                <span class="kanban-column-name">Buyer</span>
+                                <span class="kanban-count">1</span>
+                            </div>
+                        </div>
+                        <div class="kanban-cards">
+                            <div class="kanban-card">
+                                <div class="kanban-card-title">John Smith</div>
+                                <div class="kanban-card-actions">
+                                    <a href="#">View details</a>
+                                    <span>·</span>
+                                    <a href="#" class="delete">Delete</a>
+                                </div>
+                            </div>
+                            <button class="kanban-add-card">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                                Add contact
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Seller Column -->
+                    <div class="kanban-column">
+                        <div class="kanban-column-header">
+                            <div class="kanban-column-title">
+                                <span class="kanban-dot kanban-dot-green"></span>
+                                <span class="kanban-column-name">Seller</span>
+                                <span class="kanban-count">1</span>
+                            </div>
+                        </div>
+                        <div class="kanban-cards">
+                            <div class="kanban-card">
+                                <div class="kanban-card-title">Sarah Johnson</div>
+                                <div class="kanban-card-actions">
+                                    <a href="#">View details</a>
+                                    <span>·</span>
+                                    <a href="#" class="delete">Delete</a>
+                                </div>
+                            </div>
+                            <button class="kanban-add-card">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                                Add contact
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Both Column -->
+                    <div class="kanban-column">
+                        <div class="kanban-column-header">
+                            <div class="kanban-column-title">
+                                <span class="kanban-dot kanban-dot-yellow"></span>
+                                <span class="kanban-column-name">Both</span>
+                                <span class="kanban-count">1</span>
+                            </div>
+                        </div>
+                        <div class="kanban-cards">
+                            <div class="kanban-card">
+                                <div class="kanban-card-title">Michael Brown</div>
+                                <div class="kanban-card-actions">
+                                    <a href="#">View details</a>
+                                    <span>·</span>
+                                    <a href="#" class="delete">Delete</a>
+                                </div>
+                            </div>
+                            <button class="kanban-add-card">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                                Add contact
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Lead Column -->
+                    <div class="kanban-column">
+                        <div class="kanban-column-header">
+                            <div class="kanban-column-title">
+                                <span class="kanban-dot kanban-dot-red"></span>
+                                <span class="kanban-column-name">Lead</span>
+                                <span class="kanban-count">1</span>
+                            </div>
+                        </div>
+                        <div class="kanban-cards">
+                            <button class="kanban-add-card">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                </svg>
+                                Add contact
+                            </button>
+                            <div class="kanban-empty">
+                                <p>No contacts yet</p>
+                                <p class="text-xs">Drag contacts here or click "Add contact"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

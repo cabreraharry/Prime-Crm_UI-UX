@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templates - Prime Database</title>
+    <meta name="description" content="Browse pre-built templates for your real estate business.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="templates.css">
+</head>
+
+<body class="app-body">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="sidebar-logo">
+                <img src="logo.png" alt="US Prime Realty">
+                <span>Prime Database</span>
+            </a>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <a href="home.html" class="nav-item">
+                    <span class="nav-item-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                    </span>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-item-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                    </span>
+                    <span>Starred</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-item-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                    </span>
+                    <span>Shared</span>
+                </a>
+                <a href="templates.html" class="nav-item active">
+                    <span class="nav-item-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <line x1="3" y1="9" x2="21" y2="9" />
+                            <line x1="9" y1="21" x2="9" y2="9" />
+                        </svg>
+                    </span>
+                    <span>Templates</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-header">
+                    <span class="nav-section-title">Workspaces</span>
+                    <button class="nav-section-action">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                    </button>
+                </div>
+                <a href="workspace.html" class="nav-item workspace-item">
+                    <span class="workspace-dot" style="background: var(--blue-500);"></span>
+                    <span>My First Workspace</span>
+                    <div class="sidebar-workspace-actions">
+                        <button class="workspace-action-btn" title="Edit">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                            </svg>
+                        </button>
+                        <button class="workspace-action-btn delete" title="Delete">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="3 6 5 6 21 6" />
+                                <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+                <a href="#" class="nav-item workspace-item">
+                    <span class="workspace-dot" style="background: var(--gold-500);"></span>
+                    <span>Sales Team</span>
+                    <div class="sidebar-workspace-actions">
+                        <button class="workspace-action-btn" title="Edit">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                            </svg>
+                        </button>
+                        <button class="workspace-action-btn delete" title="Delete">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="3 6 5 6 21 6" />
+                                <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+                <a href="#" class="nav-item workspace-item">
+                    <span class="workspace-dot" style="background: var(--success);"></span>
+                    <span>Property Listings</span>
+                    <div class="sidebar-workspace-actions">
+                        <button class="workspace-action-btn" title="Edit">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                            </svg>
+                        </button>
+                        <button class="workspace-action-btn delete" title="Delete">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="3 6 5 6 21 6" />
+                                <path
+                                    d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="sidebar-create-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                Create
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-search">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="M21 21l-4.35-4.35" />
+                </svg>
+                <input type="text" placeholder="Search..." class="header-search-input">
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-ghost">Help</button>
+                <div class="avatar">H</div>
+                <button class="btn btn-ghost text-sm">Sign out</button>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+                <div class="welcome-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                </div>
+                <p>Welcome to the improved Home. Find, navigate to, and manage your apps more easily.</p>
+                <button class="welcome-close">×</button>
+            </div>
+
+            <!-- Page Header -->
+            <div class="templates-header">
+                <div>
+                    <h1>Templates</h1>
+                    <p class="templates-subtitle">Create bases from pre-built templates or your custom designs</p>
+                </div>
+                <div class="view-toggle">
+                    <button class="view-toggle-btn active">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7" />
+                            <rect x="14" y="3" width="7" height="7" />
+                            <rect x="14" y="14" width="7" height="7" />
+                            <rect x="3" y="14" width="7" height="7" />
+                        </svg>
+                    </button>
+                    <button class="view-toggle-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="8" y1="6" x2="21" y2="6" />
+                            <line x1="8" y1="12" x2="21" y2="12" />
+                            <line x1="8" y1="18" x2="21" y2="18" />
+                            <line x1="3" y1="6" x2="3.01" y2="6" />
+                            <line x1="3" y1="12" x2="3.01" y2="12" />
+                            <line x1="3" y1="18" x2="3.01" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search Templates -->
+            <div class="templates-search">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="M21 21l-4.35-4.35" />
+                </svg>
+                <input type="text" placeholder="Search templates..." class="templates-search-input">
+            </div>
+
+            <!-- Category Tabs -->
+            <div class="templates-tabs">
+                <button class="template-tab active" data-category="all">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7" />
+                        <rect x="14" y="3" width="7" height="7" />
+                        <rect x="14" y="14" width="7" height="7" />
+                        <rect x="3" y="14" width="7" height="7" />
+                    </svg>
+                    All Templates
+                </button>
+                <button class="template-tab" data-category="crm">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                    CRM
+                </button>
+                <button class="template-tab" data-category="project">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20h9" />
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                    </svg>
+                    Project Management
+                </button>
+                <button class="template-tab" data-category="inventory">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                        <line x1="12" y1="22.08" x2="12" y2="12" />
+                    </svg>
+                    Inventory
+                </button>
+                <button class="template-tab" data-category="event">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    Event Planning
+                </button>
+                <button class="template-tab" data-category="content">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                        <polyline points="10 9 9 9 8 9" />
+                    </svg>
+                    Content Calendar
+                </button>
+                <button class="template-tab" data-category="custom">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20h9" />
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                    </svg>
+                    Custom
+                </button>
+            </div>
+
+            <!-- Pre-built Templates -->
+            <section class="templates-section">
+                <h2 class="section-title">Pre-built Templates</h2>
+
+                <div class="templates-grid" id="templatesGrid">
+                    <!-- Content Calendar -->
+                    <div class="template-card" data-category="content all">
+                        <div class="template-card-icon template-icon-blue">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                            </svg>
+                        </div>
+                        <div class="template-card-content">
+                            <h3>Content Calendar</h3>
+                            <p>Plan and track content creation and publication. Perfect for marketing teams and content
+                                creators.</p>
+                            <div class="template-stats">
+                                <span>4 tables</span>
+                                <span>26 fields</span>
+                                <span>10 records</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-blue template-use-btn">Use Template</button>
+                    </div>
+
+                    <!-- Event Planning -->
+                    <div class="template-card" data-category="event all">
+                        <div class="template-card-icon template-icon-green">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                <line x1="16" y1="2" x2="16" y2="6" />
+                                <line x1="8" y1="2" x2="8" y2="6" />
+                                <line x1="3" y1="10" x2="21" y2="10" />
+                            </svg>
+                        </div>
+                        <div class="template-card-content">
+                            <h3>Event Planning</h3>
+                            <p>Organize events, manage attendees, and track vendors. Perfect for event coordinators and
+                                planners.</p>
+                            <div class="template-stats">
+                                <span>4 tables</span>
+                                <span>24 fields</span>
+                                <span>8 records</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-blue template-use-btn">Use Template</button>
+                    </div>
+
+                    <!-- Inventory Management -->
+                    <div class="template-card" data-category="inventory all">
+                        <div class="template-card-icon template-icon-purple">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                <line x1="12" y1="22.08" x2="12" y2="12" />
+                            </svg>
+                        </div>
+                        <div class="template-card-content">
+                            <h3>Inventory Management</h3>
+                            <p>Track products, suppliers, and stock levels. Perfect for small businesses and warehouses.
+                            </p>
+                            <div class="template-stats">
+                                <span>4 tables</span>
+                                <span>22 fields</span>
+                                <span>6 records</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-blue template-use-btn">Use Template</button>
+                    </div>
+
+                    <!-- Project Management -->
+                    <div class="template-card" data-category="project all">
+                        <div class="template-card-icon template-icon-orange">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 20h9" />
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                            </svg>
+                        </div>
+                        <div class="template-card-content">
+                            <h3>Project Management</h3>
+                            <p>Track projects, tasks, and team progress. Perfect for agile teams and project managers.
+                            </p>
+                            <div class="template-stats">
+                                <span>4 tables</span>
+                                <span>27 fields</span>
+                                <span>15 records</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-blue template-use-btn">Use Template</button>
+                    </div>
+
+                    <!-- Real Estate CRM -->
+                    <div class="template-card" data-category="crm all">
+                        <div class="template-card-icon template-icon-gold">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                <polyline points="9 22 9 12 15 12 15 22" />
+                            </svg>
+                        </div>
+                        <div class="template-card-content">
+                            <h3>Real Estate CRM</h3>
+                            <p>Manage properties, clients, and deals all in one place. Perfect for real estate agents
+                                and agencies.</p>
+                            <div class="template-stats">
+                                <span>5 tables</span>
+                                <span>35 fields</span>
+                                <span>12 records</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-blue template-use-btn">Use Template</button>
+                    </div>
+
+                    <!-- Property Tracker -->
+                    <div class="template-card" data-category="crm all">
+                        <div class="template-card-icon template-icon-blue">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                                <line x1="3" y1="9" x2="21" y2="9" />
+                                <line x1="9" y1="21" x2="9" y2="9" />
+                            </svg>
+                        </div>
+                        <div class="template-card-content">
+                            <h3>Property Tracker</h3>
+                            <p>Track listings, showings, and market analysis. Perfect for real estate investors and
+                                analysts.</p>
+                            <div class="template-stats">
+                                <span>3 tables</span>
+                                <span>28 fields</span>
+                                <span>20 records</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-blue template-use-btn">Use Template</button>
+                    </div>
+
+                    <!-- Lead Pipeline -->
+                    <div class="template-card" data-category="crm all">
+                        <div class="template-card-icon template-icon-green">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                            </svg>
+                        </div>
+                        <div class="template-card-content">
+                            <h3>Lead Pipeline</h3>
+                            <p>Manage leads from first contact to closing. Track conversion rates and follow-ups.</p>
+                            <div class="template-stats">
+                                <span>4 tables</span>
+                                <span>30 fields</span>
+                                <span>25 records</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-blue template-use-btn">Use Template</button>
+                    </div>
+
+                    <!-- Open House Scheduler -->
+                    <div class="template-card" data-category="event all">
+                        <div class="template-card-icon template-icon-orange">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                        </div>
+                        <div class="template-card-content">
+                            <h3>Open House Scheduler</h3>
+                            <p>Schedule and manage open houses. Track visitors and collect feedback efficiently.</p>
+                            <div class="template-stats">
+                                <span>3 tables</span>
+                                <span>18 fields</span>
+                                <span>8 records</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-blue template-use-btn">Use Template</button>
+                    </div>
+
+                    <!-- Commission Tracker -->
+                    <div class="template-card" data-category="project all">
+                        <div class="template-card-icon template-icon-gold">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                        </div>
+                        <div class="template-card-content">
+                            <h3>Commission Tracker</h3>
+                            <p>Track agent commissions, splits, and payouts. Perfect for brokerages and team leads.</p>
+                            <div class="template-stats">
+                                <span>3 tables</span>
+                                <span>20 fields</span>
+                                <span>15 records</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-blue template-use-btn">Use Template</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        // Template category filtering
+        document.querySelectorAll('.template-tab').forEach(tab => {
+            tab.addEventListener('click', function () {
+                // Update active tab
+                document.querySelectorAll('.template-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                const category = this.dataset.category;
+                const cards = document.querySelectorAll('.template-card');
+
+                cards.forEach(card => {
+                    const cardCategories = card.dataset.category.split(' ');
+                    if (category === 'all' || cardCategories.includes(category)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Template search
+        document.querySelector('.templates-search-input').addEventListener('input', function () {
+            const searchTerm = this.value.toLowerCase();
+            const cards = document.querySelectorAll('.template-card');
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

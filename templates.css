@@ -1,0 +1,210 @@
+/* ============================================
+   TEMPLATES PAGE STYLES
+   ============================================ */
+
+/* Templates Header */
+.templates-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: var(--space-6);
+}
+
+.templates-header h1 {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+}
+
+.templates-subtitle {
+    color: var(--gray-500);
+    font-size: var(--font-size-sm);
+}
+
+/* Templates Search */
+.templates-search {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-6);
+    transition: all var(--transition-fast);
+}
+
+.templates-search:focus-within {
+    border-color: var(--blue-500);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.templates-search svg {
+    color: var(--gray-400);
+}
+
+.templates-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: var(--font-size-sm);
+    background: transparent;
+}
+
+/* Template Tabs */
+.templates-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.template-tab {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--gray-600);
+    background: transparent;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.template-tab:hover {
+    background: var(--gray-100);
+    border-color: var(--gray-300);
+}
+
+.template-tab.active {
+    background: var(--blue-500);
+    color: var(--white);
+    border-color: var(--blue-500);
+}
+
+/* Templates Section */
+.templates-section {
+    margin-bottom: var(--space-8);
+}
+
+/* Templates Grid */
+.templates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: var(--space-5);
+}
+
+/* Template Card */
+.template-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5);
+    transition: all var(--transition-base);
+}
+
+.template-card:hover {
+    border-color: var(--blue-300);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.template-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+}
+
+.template-icon-blue {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--blue-500);
+}
+
+.template-icon-green {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--success);
+}
+
+.template-icon-purple {
+    background: rgba(139, 92, 246, 0.1);
+    color: #8b5cf6;
+}
+
+.template-icon-orange {
+    background: rgba(249, 115, 22, 0.1);
+    color: #f97316;
+}
+
+.template-icon-gold {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--gold-500);
+}
+
+.template-card-content {
+    flex: 1;
+    margin-bottom: var(--space-4);
+}
+
+.template-card-content h3 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    color: var(--gray-900);
+}
+
+.template-card-content p {
+    font-size: var(--font-size-sm);
+    color: var(--gray-500);
+    line-height: 1.5;
+    margin-bottom: var(--space-4);
+}
+
+.template-stats {
+    display: flex;
+    gap: var(--space-4);
+    font-size: var(--font-size-xs);
+    color: var(--gray-400);
+}
+
+.template-stats span {
+    display: flex;
+    align-items: center;
+}
+
+.template-use-btn {
+    width: 100%;
+    justify-content: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .templates-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .templates-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .templates-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .template-tab {
+        flex-shrink: 0;
+    }
+}

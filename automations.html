@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automations - Real Estate CRM</title>
+    <meta name="description" content="Create automations to streamline your real estate workflows.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body class="app-body">
+    <div class="grid-view-layout">
+        <!-- Left Sidebar -->
+        <aside class="grid-sidebar">
+            <div class="grid-sidebar-header">
+                <button class="grid-sidebar-create">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                    Create new...
+                </button>
+            </div>
+            <div class="grid-sidebar-search">
+                <input type="text" placeholder="Find a view">
+            </div>
+            <div class="grid-sidebar-views">
+                <a href="grid-view.html" class="view-item active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <path d="M3 9h18M9 21V9" />
+                    </svg>
+                    Grid view
+                </a>
+                <a href="kanban-view.html" class="view-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="4" y="4" width="6" height="16" rx="1" />
+                        <rect x="14" y="4" width="6" height="10" rx="1" />
+                    </svg>
+                    Kanban
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Area -->
+        <div class="grid-main">
+            <!-- Grid Header -->
+            <div class="grid-header">
+                <div class="grid-header-left">
+                    <a href="workspace.html" class="back-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                    </a>
+                    <div class="grid-title">
+                        <div class="grid-title-icon">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                        </div>
+                        <h2>Real Estate CRM</h2>
+                    </div>
+                </div>
+                <div class="grid-header-right">
+                    <button class="btn btn-secondary btn-sm">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                        </svg>
+                        Connect GHL
+                    </button>
+                    <button class="btn btn-ghost btn-sm">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        Export
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="grid-nav-tabs">
+                <a href="grid-view.html" class="grid-nav-tab">Data</a>
+                <a href="automations.html" class="grid-nav-tab active">Automations</a>
+                <a href="#" class="grid-nav-tab">Documents</a>
+            </div>
+
+            <!-- Automations Header -->
+            <div class="page-content" style="padding: var(--space-6);">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 style="font-size: var(--font-size-xl); font-weight: 600; margin-bottom: var(--space-2);">
+                            Automations</h2>
+                        <p class="text-muted text-sm">Automate workflows by copying and moving data between tables</p>
+                    </div>
+                    <button class="btn btn-blue">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Create Automation
+                    </button>
+                </div>
+
+                <!-- Empty State -->
+                <div class="automations-empty">
+                    <div class="automations-empty-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <polygon points="5 3 19 12 5 21 5 3" />
+                        </svg>
+                    </div>
+                    <h3>No automations yet</h3>
+                    <p>Create your first automation to start copying and moving data between tables</p>
+                    <button class="btn btn-blue">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Create Automation
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
