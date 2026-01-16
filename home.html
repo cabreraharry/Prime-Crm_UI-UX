@@ -36,28 +36,62 @@
                     </span>
                     <span>Home</span>
                 </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-item-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <polygon
-                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                        </svg>
-                    </span>
-                    <span>Starred</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <span class="nav-item-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                            <circle cx="9" cy="7" r="4" />
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                        </svg>
-                    </span>
-                    <span>Shared</span>
-                </a>
+
+                <!-- Starred Section -->
+                <div class="nav-section-collapsible">
+                    <a href="#" class="nav-item nav-item-expandable">
+                        <span class="nav-item-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
+                        </span>
+                        <span>Starred</span>
+                        <span class="nav-item-badge">3</span>
+                    </a>
+                    <div class="nav-subitems">
+                        <a href="grid-view.html" class="nav-subitem">
+                            <span class="nav-subitem-dot" style="background: var(--gold-500);"></span>
+                            Real Estate CRM
+                        </a>
+                        <a href="grid-view.html" class="nav-subitem">
+                            <span class="nav-subitem-dot" style="background: var(--blue-500);"></span>
+                            Active Leads
+                        </a>
+                        <a href="grid-view.html" class="nav-subitem">
+                            <span class="nav-subitem-dot" style="background: var(--success);"></span>
+                            Transaction Pipeline
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Shared Section -->
+                <div class="nav-section-collapsible">
+                    <a href="#" class="nav-item nav-item-expandable">
+                        <span class="nav-item-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg>
+                        </span>
+                        <span>Shared</span>
+                        <span class="nav-item-badge">2</span>
+                    </a>
+                    <div class="nav-subitems">
+                        <a href="grid-view.html" class="nav-subitem">
+                            <span class="nav-subitem-dot" style="background: var(--blue-400);"></span>
+                            Team Property List
+                        </a>
+                        <a href="grid-view.html" class="nav-subitem">
+                            <span class="nav-subitem-dot" style="background: var(--warning);"></span>
+                            Marketing Contacts
+                        </a>
+                    </div>
+                </div>
                 <a href="templates.html" class="nav-item">
                     <span class="nav-item-icon">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -206,7 +240,8 @@
                         </button>
                     </div>
                     <div class="view-toggle">
-                        <button class="view-toggle-btn active">
+                        <button id="gridViewBtn" class="view-toggle-btn active" onclick="switchView('grid')"
+                            title="Grid View">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <rect x="3" y="3" width="7" height="7" />
@@ -215,7 +250,7 @@
                                 <rect x="3" y="14" width="7" height="7" />
                             </svg>
                         </button>
-                        <button class="view-toggle-btn">
+                        <button id="listViewBtn" class="view-toggle-btn" onclick="switchView('list')" title="List View">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <line x1="8" y1="6" x2="21" y2="6" />
@@ -233,8 +268,8 @@
             <!-- Today Section -->
             <section class="content-section">
                 <h2 class="section-title">Today</h2>
-                <div class="database-grid">
-                    <a href="grid-view.html" class="database-card">
+                <div class="database-grid" id="databaseGridView">
+                    <div class="database-card" data-href="grid-view.html" data-name="Real Estate CRM">
                         <div class="database-card-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
@@ -248,57 +283,415 @@
                                 and agencies.</p>
                             <span class="database-card-time">Opened just now · 3:02 PM</span>
                         </div>
-                    </a>
+                        <div class="database-card-actions">
+                            <button class="card-action-btn star-btn starred" title="Remove from starred"
+                                onclick="toggleStar(event, this)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                                    stroke="currentColor" stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </button>
+                            <button class="card-action-btn menu-btn" title="More options"
+                                onclick="showCardMenu(event, this)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="12" cy="5" r="1" />
+                                    <circle cx="12" cy="19" r="1" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <!-- Earlier Section -->
             <section class="content-section">
                 <h2 class="section-title">Earlier</h2>
-                <div class="database-grid">
-                    <a href="grid-view.html" class="database-card">
+                <!-- Grid View -->
+                <div class="database-grid" id="earlierGridView">
+                    <div class="database-card" data-href="grid-view.html" data-name="Active Leads">
                         <div class="database-card-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                <polyline points="14 2 14 8 20 8" />
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                             </svg>
                         </div>
                         <div class="database-card-content">
-                            <h3>GHL test</h3>
-                            <p>No description</p>
+                            <h3>Active Leads</h3>
+                            <p>Track potential buyers and sellers with contact info and follow-up schedules.</p>
                             <span class="database-card-time">Opened 1 day ago · 12:09 PM</span>
                         </div>
-                    </a>
-                    <a href="grid-view.html" class="database-card">
+                        <div class="database-card-actions">
+                            <button class="card-action-btn star-btn starred" title="Remove from starred"
+                                onclick="toggleStar(event, this)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                                    stroke="currentColor" stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </button>
+                            <button class="card-action-btn menu-btn" title="More options">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="12" cy="5" r="1" />
+                                    <circle cx="12" cy="19" r="1" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="database-card" data-href="grid-view.html" data-name="Property Listings">
                         <div class="database-card-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                <polyline points="14 2 14 8 20 8" />
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                <polyline points="9 22 9 12 15 12 15 22" />
                             </svg>
                         </div>
                         <div class="database-card-content">
-                            <h3>Test CRM</h3>
-                            <p>No description</p>
-                            <span class="database-card-time">Opened 3 days ago · 11:14 AM</span>
+                            <h3>Property Listings</h3>
+                            <p>147 active listings with photos, pricing, and showing schedules.</p>
+                            <span class="database-card-time">Opened 2 days ago · 11:14 AM</span>
                         </div>
-                    </a>
-                    <a href="grid-view.html" class="database-card">
+                        <div class="database-card-actions">
+                            <button class="card-action-btn star-btn" title="Add to starred"
+                                onclick="toggleStar(event, this)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </button>
+                            <button class="card-action-btn menu-btn" title="More options">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="12" cy="5" r="1" />
+                                    <circle cx="12" cy="19" r="1" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="database-card" data-href="grid-view.html" data-name="Showing Schedule">
                         <div class="database-card-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                <polyline points="14 2 14 8 20 8" />
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                <line x1="16" y1="2" x2="16" y2="6" />
+                                <line x1="8" y1="2" x2="8" y2="6" />
+                                <line x1="3" y1="10" x2="21" y2="10" />
                             </svg>
                         </div>
                         <div class="database-card-content">
-                            <h3>Client Tracker</h3>
-                            <p>Track all your clients and their property preferences.</p>
-                            <span class="database-card-time">Opened 5 days ago · 9:30 AM</span>
+                            <h3>Showing Schedule</h3>
+                            <p>Upcoming property showings and open house events this month.</p>
+                            <span class="database-card-time">Opened 3 days ago · 9:30 AM</span>
                         </div>
-                    </a>
+                        <div class="database-card-actions">
+                            <button class="card-action-btn star-btn" title="Add to starred"
+                                onclick="toggleStar(event, this)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </button>
+                            <button class="card-action-btn menu-btn" title="More options">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="12" cy="5" r="1" />
+                                    <circle cx="12" cy="19" r="1" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="database-card" data-href="grid-view.html" data-name="Transaction Pipeline">
+                        <div class="database-card-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                        </div>
+                        <div class="database-card-content">
+                            <h3>Transaction Pipeline</h3>
+                            <p>23 deals in progress worth $4.2M in potential commissions.</p>
+                            <span class="database-card-time">Opened 4 days ago · 2:45 PM</span>
+                        </div>
+                        <div class="database-card-actions">
+                            <button class="card-action-btn star-btn starred" title="Remove from starred"
+                                onclick="toggleStar(event, this)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                                    stroke="currentColor" stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </button>
+                            <button class="card-action-btn menu-btn" title="More options">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="12" cy="5" r="1" />
+                                    <circle cx="12" cy="19" r="1" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="database-card" data-href="grid-view.html" data-name="Follow-up Tasks">
+                        <div class="database-card-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                        </div>
+                        <div class="database-card-content">
+                            <h3>Follow-up Tasks</h3>
+                            <p>12 pending follow-ups, 5 due today. Keep your leads engaged.</p>
+                            <span class="database-card-time">Opened 5 days ago · 10:00 AM</span>
+                        </div>
+                        <div class="database-card-actions">
+                            <button class="card-action-btn star-btn" title="Add to starred"
+                                onclick="toggleStar(event, this)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </button>
+                            <button class="card-action-btn menu-btn" title="More options">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="12" cy="5" r="1" />
+                                    <circle cx="12" cy="19" r="1" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="database-card" data-href="grid-view.html" data-name="Commission Tracker">
+                        <div class="database-card-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                        </div>
+                        <div class="database-card-content">
+                            <h3>Commission Tracker</h3>
+                            <p>Year-to-date: $127,450. Q4 target: $45,000 (78% achieved).</p>
+                            <span class="database-card-time">Opened 1 week ago · 4:15 PM</span>
+                        </div>
+                        <div class="database-card-actions">
+                            <button class="card-action-btn star-btn" title="Add to starred"
+                                onclick="toggleStar(event, this)">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </button>
+                            <button class="card-action-btn menu-btn" title="More options">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="12" cy="5" r="1" />
+                                    <circle cx="12" cy="19" r="1" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- List View (Hidden by default) -->
+                <div class="database-list hidden" id="earlierListView">
+                    <div class="list-item" data-href="grid-view.html" data-name="Active Leads">
+                        <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                            </svg></div>
+                        <div class="list-item-content">
+                            <h4>Active Leads</h4>
+                            <p>Track potential buyers and sellers with contact info and follow-up schedules.</p>
+                        </div>
+                        <span class="list-item-time">1 day ago</span>
+                        <div class="list-item-actions">
+                            <button class="card-action-btn star-btn starred" title="Remove from starred"
+                                onclick="toggleStar(event, this)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"
+                                    stroke="currentColor" stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </button>
+                            <button class="card-action-btn menu-btn" title="More options">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="12" cy="5" r="1" />
+                                    <circle cx="12" cy="19" r="1" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="list-item" data-href="grid-view.html" data-name="Property Listings">
+                        <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                <polyline points="9 22 9 12 15 12 15 22" />
+                            </svg></div>
+                        <div class="list-item-content">
+                            <h4>Property Listings</h4>
+                            <p>147 active listings with photos, pricing, and showing schedules.</p>
+                        </div>
+                        <span class="list-item-time">2 days ago</span>
+                        <div class="list-item-actions">
+                            <button class="card-action-btn star-btn" title="Add to starred"
+                                onclick="toggleStar(event, this)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </button>
+                            <button class="card-action-btn menu-btn" title="More options">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="12" cy="5" r="1" />
+                                    <circle cx="12" cy="19" r="1" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="list-item" data-href="grid-view.html" data-name="Showing Schedule">
+                        <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                                <line x1="16" y1="2" x2="16" y2="6" />
+                                <line x1="8" y1="2" x2="8" y2="6" />
+                            </svg></div>
+                        <div class="list-item-content">
+                            <h4>Showing Schedule</h4>
+                            <p>Upcoming property showings and open house events this month.</p>
+                        </div>
+                        <span class="list-item-time">3 days ago</span>
+                        <div class="list-item-actions">
+                            <button class="card-action-btn star-btn" title="Add to starred"
+                                onclick="toggleStar(event, this)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </button>
+                            <button class="card-action-btn menu-btn" title="More options">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="12" cy="5" r="1" />
+                                    <circle cx="12" cy="19" r="1" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="list-item" data-href="grid-view.html" data-name="Transaction Pipeline">
+                        <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg></div>
+                        <div class="list-item-content">
+                            <h4>Transaction Pipeline</h4>
+                            <p>23 deals in progress worth $4.2M in potential commissions.</p>
+                        </div>
+                        <span class="list-item-time">4 days ago</span>
+                        <div class="list-item-actions">
+                            <button class="card-action-btn star-btn starred" title="Remove from starred"
+                                onclick="toggleStar(event, this)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"
+                                    stroke="currentColor" stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </button>
+                            <button class="card-action-btn menu-btn" title="More options">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="12" cy="5" r="1" />
+                                    <circle cx="12" cy="19" r="1" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="list-item" data-href="grid-view.html" data-name="Follow-up Tasks">
+                        <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg></div>
+                        <div class="list-item-content">
+                            <h4>Follow-up Tasks</h4>
+                            <p>12 pending follow-ups, 5 due today. Keep your leads engaged.</p>
+                        </div>
+                        <span class="list-item-time">5 days ago</span>
+                        <div class="list-item-actions">
+                            <button class="card-action-btn star-btn" title="Add to starred"
+                                onclick="toggleStar(event, this)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </button>
+                            <button class="card-action-btn menu-btn" title="More options">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="12" cy="5" r="1" />
+                                    <circle cx="12" cy="19" r="1" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="list-item" data-href="grid-view.html" data-name="Commission Tracker">
+                        <div class="list-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg></div>
+                        <div class="list-item-content">
+                            <h4>Commission Tracker</h4>
+                            <p>Year-to-date: $127,450. Q4 target: $45,000 (78% achieved).</p>
+                        </div>
+                        <span class="list-item-time">1 week ago</span>
+                        <div class="list-item-actions">
+                            <button class="card-action-btn star-btn" title="Add to starred"
+                                onclick="toggleStar(event, this)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon
+                                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                </svg>
+                            </button>
+                            <button class="card-action-btn menu-btn" title="More options">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="12" cy="5" r="1" />
+                                    <circle cx="12" cy="19" r="1" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
             </section>
         </div>
     </main>

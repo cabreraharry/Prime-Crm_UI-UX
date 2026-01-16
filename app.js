@@ -4,7 +4,7 @@
    ============================================ */
 
 // Wait for DOM to be ready
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Initialize all interactive features
   initModals();
   initTabs();
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initModals() {
   // Close modal when clicking overlay
   document.querySelectorAll('.modal-overlay').forEach(overlay => {
-    overlay.addEventListener('click', function(e) {
+    overlay.addEventListener('click', function (e) {
       if (e.target === this) {
         closeModal(this.id);
       }
@@ -28,7 +28,7 @@ function initModals() {
   });
 
   // Close modal on ESC key
-  document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
       document.querySelectorAll('.modal-overlay.active').forEach(modal => {
         closeModal(modal.id);
@@ -65,7 +65,7 @@ function initTabs() {
   document.querySelectorAll('.tabs').forEach(tabContainer => {
     const tabs = tabContainer.querySelectorAll('.tab');
     tabs.forEach(tab => {
-      tab.addEventListener('click', function() {
+      tab.addEventListener('click', function () {
         tabs.forEach(t => t.classList.remove('active'));
         this.classList.add('active');
       });
@@ -86,13 +86,13 @@ function initDataTabs() {
   };
 
   dataTabs.forEach(tab => {
-    tab.addEventListener('click', function() {
+    tab.addEventListener('click', function () {
       const targetTab = this.dataset.tab;
-      
+
       // Update active tab
       dataTabs.forEach(t => t.classList.remove('active'));
       this.classList.add('active');
-      
+
       // Show/hide tables
       Object.keys(tableContainers).forEach(key => {
         if (tableContainers[key]) {
@@ -121,7 +121,7 @@ function initModalTabs() {
   document.querySelectorAll('.modal-tabs').forEach(tabContainer => {
     const tabs = tabContainer.querySelectorAll('.modal-tab');
     tabs.forEach(tab => {
-      tab.addEventListener('click', function() {
+      tab.addEventListener('click', function () {
         tabs.forEach(t => t.classList.remove('active'));
         this.classList.add('active');
       });
@@ -135,7 +135,7 @@ function initModalTabs() {
 function initDropdowns() {
   // Toggle dropdown on button click
   document.querySelectorAll('.dropdown > button').forEach(button => {
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', function (e) {
       e.stopPropagation();
       const menu = this.nextElementSibling;
       if (menu && menu.classList.contains('dropdown-menu')) {
@@ -149,7 +149,7 @@ function initDropdowns() {
   });
 
   // Close dropdowns when clicking outside
-  document.addEventListener('click', function() {
+  document.addEventListener('click', function () {
     document.querySelectorAll('.dropdown-menu.active').forEach(menu => {
       menu.classList.remove('active');
     });
@@ -162,7 +162,7 @@ function initDropdowns() {
 function initWelcomeBanner() {
   const closeBtn = document.querySelector('.welcome-close');
   if (closeBtn) {
-    closeBtn.addEventListener('click', function() {
+    closeBtn.addEventListener('click', function () {
       const banner = this.closest('.welcome-banner');
       if (banner) {
         banner.style.display = 'none';
@@ -172,12 +172,38 @@ function initWelcomeBanner() {
 }
 
 /* ============================================
-   VIEW TOGGLE
+   VIEW TOGGLE (Grid/List) 
    ============================================ */
+let currentView = 'grid';
+
+function switchView(viewType) {
+  currentView = viewType;
+  const gridViews = document.querySelectorAll('.database-grid');
+  const listViews = document.querySelectorAll('.database-list');
+  const gridBtn = document.getElementById('gridViewBtn');
+  const listBtn = document.getElementById('listViewBtn');
+
+  if (viewType === 'grid') {
+    gridViews.forEach(el => el.classList.remove('hidden'));
+    listViews.forEach(el => el.classList.add('hidden'));
+    if (gridBtn) gridBtn.classList.add('active');
+    if (listBtn) listBtn.classList.remove('active');
+  } else {
+    gridViews.forEach(el => el.classList.add('hidden'));
+    listViews.forEach(el => el.classList.remove('hidden'));
+    if (gridBtn) gridBtn.classList.remove('active');
+    if (listBtn) listBtn.classList.add('active');
+  }
+}
+
+// Make globally available
+window.switchView = switchView;
+
+// Initialize existing view toggles
 document.querySelectorAll('.view-toggle').forEach(toggle => {
   const buttons = toggle.querySelectorAll('.view-toggle-btn');
   buttons.forEach(btn => {
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function () {
       buttons.forEach(b => b.classList.remove('active'));
       this.classList.add('active');
     });
@@ -185,10 +211,124 @@ document.querySelectorAll('.view-toggle').forEach(toggle => {
 });
 
 /* ============================================
+   STAR TOGGLE FUNCTIONALITY
+   ============================================ */
+function toggleStar(event, btn) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  const card = btn.closest('.database-card, .list-item');
+  const itemName = card ? card.dataset.name : '';
+  const isStarred = btn.classList.contains('starred');
+
+  if (isStarred) {
+    btn.classList.remove('starred');
+    btn.title = 'Add to starred';
+    btn.querySelector('svg').setAttribute('fill', 'none');
+    showToast(`"${itemName}" removed from Starred`);
+  } else {
+    btn.classList.add('starred');
+    btn.title = 'Remove from starred';
+    btn.querySelector('svg').setAttribute('fill', 'currentColor');
+    showToast(`"${itemName}" added to Starred`);
+  }
+
+  updateStarredSidebar();
+}
+
+// Make globally available
+window.toggleStar = toggleStar;
+
+/* ============================================
+   UPDATE STARRED SIDEBAR
+   ============================================ */
+function updateStarredSidebar() {
+  const starredItems = document.querySelectorAll('.star-btn.starred');
+  const badge = document.querySelector('.nav-section-collapsible .nav-item-badge');
+  const subitems = document.querySelector('.nav-subitems');
+
+  if (badge) {
+    badge.textContent = starredItems.length;
+  }
+
+  // Update sidebar starred items dynamically
+  if (subitems) {
+    const starredNames = [];
+    starredItems.forEach(btn => {
+      const card = btn.closest('.database-card, .list-item');
+      if (card && card.dataset.name) {
+        starredNames.push(card.dataset.name);
+      }
+    });
+
+    // Update count in badge
+    if (badge) {
+      badge.textContent = starredNames.length;
+    }
+  }
+}
+
+/* ============================================
+   TOAST NOTIFICATION
+   ============================================ */
+function showToast(message) {
+  // Remove existing toast
+  const existingToast = document.querySelector('.toast-notification');
+  if (existingToast) {
+    existingToast.remove();
+  }
+
+  // Create toast
+  const toast = document.createElement('div');
+  toast.className = 'toast-notification';
+  toast.innerHTML = `
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+    <span>${message}</span>
+  `;
+  document.body.appendChild(toast);
+
+  // Animate in
+  setTimeout(() => toast.classList.add('show'), 10);
+
+  // Remove after delay
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 300);
+  }, 2500);
+}
+
+/* ============================================
+   CARD MENU
+   ============================================ */
+function showCardMenu(event, btn) {
+  event.preventDefault();
+  event.stopPropagation();
+  // Future: Show context menu with options like Edit, Delete, Duplicate, etc.
+  console.log('Card menu clicked');
+}
+
+window.showCardMenu = showCardMenu;
+
+/* ============================================
+   CARD CLICK NAVIGATION
+   ============================================ */
+document.addEventListener('click', function (e) {
+  const card = e.target.closest('.database-card, .list-item');
+  if (card && !e.target.closest('.card-action-btn, .list-item-actions')) {
+    const href = card.dataset.href;
+    if (href) {
+      window.location.href = href;
+    }
+  }
+});
+
+/* ============================================
    SMOOTH SCROLL FOR ANCHOR LINKS
    ============================================ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+  anchor.addEventListener('click', function (e) {
     const href = this.getAttribute('href');
     if (href !== '#') {
       e.preventDefault();
@@ -226,10 +366,10 @@ function formatCurrency(amount) {
    HOVER EFFECTS FOR CARDS
    ============================================ */
 document.querySelectorAll('.database-card, .feature-card, .kanban-card').forEach(card => {
-  card.addEventListener('mouseenter', function() {
+  card.addEventListener('mouseenter', function () {
     this.style.transform = 'translateY(-4px)';
   });
-  card.addEventListener('mouseleave', function() {
+  card.addEventListener('mouseleave', function () {
     this.style.transform = '';
   });
 });
@@ -242,7 +382,7 @@ document.querySelectorAll('.grid-table').forEach(table => {
   const rowCheckboxes = table.querySelectorAll('tbody input[type="checkbox"]');
 
   if (headerCheckbox) {
-    headerCheckbox.addEventListener('change', function() {
+    headerCheckbox.addEventListener('change', function () {
       rowCheckboxes.forEach(checkbox => {
         checkbox.checked = this.checked;
       });
@@ -250,10 +390,10 @@ document.querySelectorAll('.grid-table').forEach(table => {
   }
 
   rowCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', function() {
+    checkbox.addEventListener('change', function () {
       const allChecked = Array.from(rowCheckboxes).every(cb => cb.checked);
       const someChecked = Array.from(rowCheckboxes).some(cb => cb.checked);
-      
+
       if (headerCheckbox) {
         headerCheckbox.checked = allChecked;
         headerCheckbox.indeterminate = someChecked && !allChecked;
@@ -266,7 +406,7 @@ document.querySelectorAll('.grid-table').forEach(table => {
    SEARCH FUNCTIONALITY (UI only)
    ============================================ */
 document.querySelectorAll('.header-search-input, .toolbar-search input').forEach(input => {
-  input.addEventListener('input', function() {
+  input.addEventListener('input', function () {
     const searchTerm = this.value.toLowerCase();
     // This is UI-only - actual search would need backend
     console.log('Searching for:', searchTerm);
