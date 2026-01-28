@@ -12,6 +12,51 @@ document.addEventListener('DOMContentLoaded', function () {
   initDropdowns();
   initWelcomeBanner();
   initModalTabs();
+  initDarkMode();
+});
+
+/* ============================================
+   DARK MODE FUNCTIONALITY
+   ============================================ */
+function initDarkMode() {
+  // Check for saved preference
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    document.body.classList.add('dark-mode');
+  }
+}
+
+function toggleDarkMode() {
+  const body = document.body;
+  body.classList.toggle('dark-mode');
+
+  // Save preference
+  const isDark = body.classList.contains('dark-mode');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+  // Show toast notification
+  showToast(isDark ? '🌙 Dark mode enabled' : '☀️ Light mode enabled');
+}
+
+/* ============================================
+   INTEGRATIONS DROPDOWN
+   ============================================ */
+function toggleIntegrationsDropdown() {
+  const menu = document.getElementById('integrationsMenu');
+  if (menu) {
+    menu.classList.toggle('active');
+  }
+}
+
+// Close integrations menu when clicking outside
+document.addEventListener('click', function (e) {
+  const dropdown = document.querySelector('.integrations-dropdown');
+  const menu = document.getElementById('integrationsMenu');
+  if (dropdown && menu && !dropdown.contains(e.target)) {
+    menu.classList.remove('active');
+  }
 });
 
 /* ============================================

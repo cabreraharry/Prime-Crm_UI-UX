@@ -170,6 +170,25 @@
                 <input type="text" placeholder="Search..." class="header-search-input">
             </div>
             <div class="header-actions">
+                <!-- Dark Mode Toggle -->
+                <button class="theme-toggle" onclick="toggleDarkMode()" title="Toggle dark mode">
+                    <span class="theme-toggle-slider">
+                        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <line x1="12" y1="1" x2="12" y2="3" />
+                            <line x1="12" y1="21" x2="12" y2="23" />
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                            <line x1="1" y1="12" x2="3" y2="12" />
+                            <line x1="21" y1="12" x2="23" y2="12" />
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                        </svg>
+                        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                    </span>
+                </button>
                 <button class="btn btn-ghost">Help</button>
                 <div class="avatar">H</div>
                 <button class="btn btn-ghost text-sm">Sign out</button>
@@ -190,9 +209,25 @@
                 <button class="welcome-close">×</button>
             </div>
 
+            <!-- Workspace Title -->
+            <div style="padding: var(--space-4) var(--space-6);">
+                <h1 style="font-size: var(--font-size-2xl); font-weight: 600;">My First Workspace</h1>
+            </div>
+
+            <!-- Workspace Tabs -->
+            <div class="workspace-tabs"
+                style="display: flex; gap: var(--space-1); padding: 0 var(--space-6); border-bottom: 1px solid var(--gray-200); background: var(--white);">
+                <a href="analytics.html" class="workspace-tab"
+                    style="padding: var(--space-3) var(--space-4); font-size: var(--font-size-sm); font-weight: 500; color: var(--gray-600); border-bottom: 2px solid transparent; margin-bottom: -1px;">Analytics</a>
+                <a href="workspace.html" class="workspace-tab active"
+                    style="padding: var(--space-3) var(--space-4); font-size: var(--font-size-sm); font-weight: 500; color: var(--primary-500); border-bottom: 2px solid var(--primary-500); margin-bottom: -1px;">Bases</a>
+                <a href="#" class="workspace-tab"
+                    style="padding: var(--space-3) var(--space-4); font-size: var(--font-size-sm); font-weight: 500; color: var(--gray-600); border-bottom: 2px solid transparent; margin-bottom: -1px;">Settings</a>
+            </div>
+
             <!-- Workspace Header -->
-            <div class="workspace-header">
-                <h1>My First Workspace</h1>
+            <div class="workspace-header" style="padding: var(--space-4) var(--space-6);">
+                <div></div>
                 <div class="workspace-actions">
                     <div class="dropdown">
                         <button class="btn btn-secondary btn-sm">
@@ -252,7 +287,8 @@
                         </div>
                         <div class="database-card-content">
                             <h3>Real Estate CRM</h3>
-                            <p>Manage properties, clients, and deals all in one place. Perfect for real estate agents
+                            <p>Manage properties, clients, and deals all in one place. Perfect for real estate
+                                agents
                                 and agencies.</p>
                             <span class="database-card-time">Opened just now · 3:02 PM</span>
                         </div>

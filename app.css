@@ -274,6 +274,81 @@
     color: var(--gold-400);
 }
 
+/* ============================================
+   DARK MODE TOGGLE BUTTON
+   ============================================ */
+.theme-toggle {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background: var(--gray-200);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    border: none;
+    padding: 0;
+}
+
+.theme-toggle:hover {
+    background: var(--gray-300);
+}
+
+.theme-toggle-slider {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: var(--white);
+    border-radius: 50%;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle-slider svg {
+    width: 12px;
+    height: 12px;
+    color: var(--gold-500);
+}
+
+/* Dark mode active state */
+body.dark-mode .theme-toggle {
+    background: var(--primary-500);
+}
+
+body.dark-mode .theme-toggle:hover {
+    background: var(--primary-400);
+}
+
+body.dark-mode .theme-toggle-slider {
+    left: 22px;
+    background: var(--navy-800);
+}
+
+body.dark-mode .theme-toggle-slider svg {
+    color: var(--purple-400);
+}
+
+/* Sun icon (light mode) */
+.sun-icon {
+    display: block;
+}
+
+.moon-icon {
+    display: none;
+}
+
+body.dark-mode .sun-icon {
+    display: none;
+}
+
+body.dark-mode .moon-icon {
+    display: block;
+}
+
 /* Content Sections */
 .content-section {
     margin-bottom: var(--space-8);
@@ -324,7 +399,49 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.2);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+    transition: all var(--transition-base);
+}
+
+/* Colorful Icon Variants - Monday.com Style */
+.database-card-icon.icon-blue {
+    background: var(--primary-gradient);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.database-card-icon.icon-orange {
+    background: var(--orange-gradient);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+}
+
+.database-card-icon.icon-green {
+    background: var(--green-gradient);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+}
+
+.database-card-icon.icon-purple {
+    background: var(--purple-gradient);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+}
+
+.database-card-icon.icon-teal {
+    background: var(--teal-gradient);
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.25);
+}
+
+.database-card-icon.icon-pink {
+    background: var(--pink-gradient);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
+}
+
+.database-card-icon.icon-indigo {
+    background: var(--indigo-gradient);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
+
+.database-card-icon.icon-gold {
+    background: var(--gold-gradient);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
 }
 
 .database-card-content {
@@ -745,7 +862,7 @@ select.input {
     font-weight: 500;
 }
 
-/* Data Tabs */
+/* Data Tabs - Colorful Premium */
 .data-tabs {
     display: flex;
     gap: var(--space-2);
@@ -757,18 +874,45 @@ select.input {
 .data-tab {
     padding: var(--space-2) var(--space-4);
     font-size: var(--font-size-sm);
+    font-weight: 500;
     color: var(--gray-600);
-    border-radius: var(--radius-md);
-    transition: all var(--transition-fast);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    position: relative;
+    border: 1px solid transparent;
 }
 
 .data-tab:hover {
     background: var(--gray-100);
+    transform: translateY(-1px);
 }
 
 .data-tab.active {
-    background: var(--blue-500);
+    background: var(--primary-gradient);
     color: var(--white);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    border-color: transparent;
+}
+
+/* Colorful Tab Variants */
+.data-tab[data-tab="contacts"].active {
+    background: var(--primary-gradient);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.data-tab[data-tab="properties"].active {
+    background: var(--green-gradient);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+}
+
+.data-tab[data-tab="deals"].active {
+    background: var(--orange-gradient);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+}
+
+.data-tab[data-tab="tasks"].active {
+    background: var(--pink-gradient);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
 }
 
 /* Toolbar */
@@ -854,19 +998,32 @@ select.input {
 }
 
 .grid-table th {
-    background: var(--gray-50);
-    font-weight: 500;
+    background: linear-gradient(180deg, var(--gray-50) 0%, var(--gray-100) 100%);
+    font-weight: 600;
     color: var(--gray-600);
     font-size: var(--font-size-xs);
     text-transform: uppercase;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.05em;
     position: sticky;
     top: 0;
     z-index: 10;
+    border-bottom: 2px solid var(--gray-200);
 }
 
-.grid-table tr:hover td {
-    background: var(--gray-50);
+.grid-table tbody tr {
+    transition: all var(--transition-fast);
+}
+
+.grid-table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(37, 99, 235, 0.04) 0%, transparent 100%);
+}
+
+.grid-table tbody tr:hover td {
+    border-left: 3px solid var(--primary-500);
+}
+
+.grid-table tbody tr:hover td:first-child {
+    border-left: 3px solid var(--primary-500);
 }
 
 .grid-table td {
@@ -1077,29 +1234,45 @@ select.input {
 }
 
 .kanban-dot {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
+    box-shadow: 0 0 8px currentColor;
 }
 
 .kanban-dot-gray {
     background: var(--gray-400);
+    box-shadow: 0 0 8px rgba(156, 163, 175, 0.4);
 }
 
 .kanban-dot-blue {
-    background: var(--blue-500);
+    background: var(--primary-500);
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.5);
 }
 
 .kanban-dot-green {
     background: var(--success);
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
 }
 
 .kanban-dot-yellow {
     background: #eab308;
+    box-shadow: 0 0 8px rgba(234, 179, 8, 0.5);
 }
 
 .kanban-dot-red {
     background: var(--error);
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+}
+
+.kanban-dot-purple {
+    background: var(--purple-500);
+    box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+}
+
+.kanban-dot-orange {
+    background: var(--orange-500);
+    box-shadow: 0 0 8px rgba(249, 115, 22, 0.5);
 }
 
 .kanban-column-name {
@@ -1126,15 +1299,17 @@ select.input {
 .kanban-card {
     background: var(--white);
     border: 1px solid var(--gray-200);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     padding: var(--space-4);
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all var(--transition-base);
+    position: relative;
 }
 
 .kanban-card:hover {
-    border-color: var(--blue-300);
-    box-shadow: var(--shadow-md);
+    border-color: var(--primary-400);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
 }
 
 .kanban-card-title {
@@ -1229,4 +1404,456 @@ select.input {
 
 .dropdown-item:hover {
     background: var(--gray-100);
+}
+
+/* ============================================
+   DARK MODE COMPONENT OVERRIDES
+   ============================================ */
+body.dark-mode {
+    background: var(--app-bg);
+    color: var(--text-primary);
+}
+
+body.dark-mode .main-content {
+    background: var(--content-bg);
+}
+
+body.dark-mode .app-header {
+    background: var(--content-bg);
+    border-color: var(--card-border);
+}
+
+body.dark-mode .header-search {
+    background: var(--gray-100);
+    border-color: var(--gray-200);
+}
+
+body.dark-mode .header-search-input {
+    color: var(--text-primary);
+}
+
+body.dark-mode .page-content {
+    background: var(--content-bg);
+}
+
+body.dark-mode .database-card {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+}
+
+body.dark-mode .database-card:hover {
+    border-color: var(--primary-500);
+}
+
+body.dark-mode .database-card-content h3 {
+    color: var(--text-primary);
+}
+
+body.dark-mode .database-card-content p {
+    color: var(--text-secondary);
+}
+
+body.dark-mode .section-title {
+    color: var(--text-secondary);
+}
+
+body.dark-mode .welcome-banner {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(34, 197, 94, 0.05) 100%);
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+body.dark-mode .welcome-banner p {
+    color: var(--text-primary);
+}
+
+/* Grid View Dark Mode */
+body.dark-mode .grid-main {
+    background: var(--content-bg);
+}
+
+body.dark-mode .grid-header {
+    background: var(--content-bg);
+    border-color: var(--card-border);
+}
+
+body.dark-mode .grid-nav-tabs {
+    background: var(--content-bg);
+    border-color: var(--card-border);
+}
+
+body.dark-mode .grid-nav-tab {
+    color: var(--text-secondary);
+}
+
+body.dark-mode .data-tabs {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+}
+
+body.dark-mode .data-tab {
+    color: var(--text-secondary);
+}
+
+body.dark-mode .data-tab:hover {
+    background: var(--gray-200);
+}
+
+body.dark-mode .grid-toolbar {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+}
+
+body.dark-mode .toolbar-btn {
+    color: var(--text-secondary);
+}
+
+body.dark-mode .toolbar-btn:hover {
+    background: var(--gray-200);
+}
+
+body.dark-mode .grid-table th {
+    background: var(--gray-100);
+    color: var(--text-secondary);
+}
+
+body.dark-mode .grid-table td {
+    color: var(--text-primary);
+    border-color: var(--card-border);
+}
+
+body.dark-mode .grid-table th,
+body.dark-mode .grid-table td {
+    border-color: var(--card-border);
+}
+
+/* Kanban Dark Mode */
+body.dark-mode .kanban-column {
+    background: var(--card-bg);
+}
+
+body.dark-mode .kanban-card {
+    background: var(--gray-100);
+    border-color: var(--gray-200);
+}
+
+body.dark-mode .kanban-card:hover {
+    border-color: var(--primary-400);
+}
+
+body.dark-mode .kanban-card-title {
+    color: var(--text-primary);
+}
+
+/* List View Dark Mode */
+body.dark-mode .list-item {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+}
+
+body.dark-mode .list-item:hover {
+    border-color: var(--primary-400);
+}
+
+body.dark-mode .list-item-content h4 {
+    color: var(--text-primary);
+}
+
+body.dark-mode .list-item-content p {
+    color: var(--text-secondary);
+}
+
+/* Additional Dark Mode Text Fixes */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: var(--text-primary);
+}
+
+body.dark-mode p {
+    color: var(--text-secondary);
+}
+
+body.dark-mode .text-muted {
+    color: var(--text-muted) !important;
+}
+
+body.dark-mode .text-sm {
+    color: var(--text-secondary);
+}
+
+body.dark-mode label,
+body.dark-mode .form-label {
+    color: var(--text-primary);
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea,
+body.dark-mode .input {
+    background: var(--gray-100);
+    border-color: var(--gray-200);
+    color: var(--text-primary);
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: var(--text-muted);
+}
+
+body.dark-mode .modal {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+}
+
+body.dark-mode .modal-title {
+    color: var(--text-primary);
+}
+
+body.dark-mode .modal-subtitle {
+    color: var(--text-secondary);
+}
+
+body.dark-mode .modal-body {
+    color: var(--text-primary);
+}
+
+body.dark-mode .btn-ghost {
+    color: var(--text-secondary);
+}
+
+body.dark-mode .btn-ghost:hover {
+    color: var(--text-primary);
+    background: var(--gray-200);
+}
+
+body.dark-mode .btn-secondary {
+    background: var(--gray-200);
+    color: var(--text-primary);
+    border-color: var(--gray-300);
+}
+
+body.dark-mode .avatar {
+    background: var(--gray-300);
+    color: var(--gray-800);
+}
+
+body.dark-mode .database-card-time {
+    color: var(--text-muted);
+}
+
+body.dark-mode .kanban-column-name {
+    color: var(--text-primary);
+}
+
+body.dark-mode .kanban-card-meta {
+    color: var(--text-secondary);
+}
+
+body.dark-mode .kanban-card-actions a {
+    color: var(--text-secondary);
+}
+
+body.dark-mode .cell-link {
+    color: var(--primary-400);
+}
+
+body.dark-mode .grid-sidebar {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+}
+
+body.dark-mode .grid-sidebar-search input {
+    background: var(--gray-100);
+    color: var(--text-primary);
+    border-color: var(--gray-200);
+}
+
+body.dark-mode .view-item {
+    color: var(--text-secondary);
+}
+
+body.dark-mode .view-item:hover,
+body.dark-mode .view-item.active {
+    background: var(--gray-200);
+    color: var(--text-primary);
+}
+
+body.dark-mode .grid-title h2 {
+    color: var(--text-primary);
+}
+
+body.dark-mode .toolbar-search {
+    background: var(--gray-100);
+    border-color: var(--gray-200);
+}
+
+body.dark-mode .toolbar-search input {
+    color: var(--text-primary);
+}
+
+/* ============================================
+   INTEGRATIONS DROPDOWN
+   ============================================ */
+.integrations-dropdown {
+    position: relative;
+}
+
+.integrations-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.integrations-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: var(--space-2);
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    min-width: 280px;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.integrations-menu.active {
+    display: block;
+}
+
+.integrations-header {
+    padding: var(--space-4) var(--space-5);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--gray-900);
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.integrations-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid var(--gray-50);
+    transition: background var(--transition-fast);
+}
+
+.integrations-item:hover:not(.disabled) {
+    background: var(--gray-50);
+}
+
+.integrations-item.disabled {
+    opacity: 0.6;
+}
+
+.integrations-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.integrations-item-name {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--gray-800);
+}
+
+.integrations-item-badge {
+    font-size: var(--font-size-xs);
+    color: var(--gray-400);
+}
+
+.integrations-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-5);
+    font-size: var(--font-size-sm);
+    color: var(--primary-500);
+    background: var(--gray-50);
+    border-top: 1px solid var(--gray-100);
+    transition: all var(--transition-fast);
+}
+
+.integrations-footer:hover {
+    background: var(--primary-50);
+    color: var(--primary-600);
+}
+
+.btn-xs {
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--font-size-xs);
+    border-radius: var(--radius-md);
+}
+
+/* Dark mode for Integrations */
+body.dark-mode .integrations-menu {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+}
+
+body.dark-mode .integrations-header {
+    color: var(--text-primary);
+    border-color: var(--card-border);
+}
+
+body.dark-mode .integrations-item {
+    border-color: var(--gray-200);
+}
+
+body.dark-mode .integrations-item:hover:not(.disabled) {
+    background: var(--gray-100);
+}
+
+body.dark-mode .integrations-item-name {
+    color: var(--text-primary);
+}
+
+body.dark-mode .integrations-footer {
+    background: var(--gray-100);
+    border-color: var(--card-border);
+}
+
+/* Table Footer / Pagination */
+.table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-4);
+    background: var(--white);
+    border-top: 1px solid var(--gray-200);
+    font-size: var(--font-size-sm);
+    color: var(--gray-600);
+}
+
+.table-footer-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.table-footer-left select {
+    padding: var(--space-1) var(--space-2);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    background: var(--white);
+}
+
+body.dark-mode .table-footer {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+    color: var(--text-secondary);
+}
+
+body.dark-mode .table-footer-left select {
+    background: var(--gray-100);
+    border-color: var(--gray-200);
+    color: var(--text-primary);
 }

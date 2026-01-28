@@ -70,6 +70,27 @@
                     </div>
                 </div>
                 <div class="grid-header-right">
+                    <!-- Dark Mode Toggle -->
+                    <button class="theme-toggle" onclick="toggleDarkMode()" title="Toggle dark mode">
+                        <span class="theme-toggle-slider">
+                            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="5" />
+                                <line x1="12" y1="1" x2="12" y2="3" />
+                                <line x1="12" y1="21" x2="12" y2="23" />
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                                <line x1="1" y1="12" x2="3" y2="12" />
+                                <line x1="21" y1="12" x2="23" y2="12" />
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                            </svg>
+                            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                            </svg>
+                        </span>
+                    </button>
                     <button class="btn btn-secondary btn-sm">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -105,7 +126,7 @@
                             Automations</h2>
                         <p class="text-muted text-sm">Automate workflows by copying and moving data between tables</p>
                     </div>
-                    <button class="btn btn-blue">
+                    <button class="btn btn-blue" onclick="openModal('createAutomationModal')">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <line x1="12" y1="5" x2="12" y2="19" />
@@ -125,7 +146,7 @@
                     </div>
                     <h3>No automations yet</h3>
                     <p>Create your first automation to start copying and moving data between tables</p>
-                    <button class="btn btn-blue">
+                    <button class="btn btn-blue" onclick="openModal('createAutomationModal')">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
                             <line x1="12" y1="5" x2="12" y2="19" />
@@ -134,6 +155,135 @@
                         Create Automation
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Automation Modal -->
+    <div class="modal-overlay" id="createAutomationModal">
+        <div class="modal modal-lg">
+            <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 class="modal-title">Create Automation</h3>
+                <button class="modal-close" onclick="closeModal('createAutomationModal')"
+                    style="background: none; border: none; font-size: 20px; cursor: pointer; color: var(--gray-500);">×</button>
+            </div>
+            <div class="modal-body">
+                <!-- Row: Automation Name & Source Table -->
+                <div
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);">
+                    <div class="form-group">
+                        <label class="form-label">Automation Name *</label>
+                        <input type="text" class="input" placeholder="Enter automation name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Source Table (optional)</label>
+                        <select class="input">
+                            <option>Any table (base wide)</option>
+                            <option>Contacts</option>
+                            <option>Properties</option>
+                            <option>Deals</option>
+                            <option>Tasks</option>
+                        </select>
+                        <p style="font-size: var(--font-size-xs); color: var(--gray-500); margin-top: var(--space-1);">
+                            Leave blank to trigger from any table in the base, or pick a table to scope this automation.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Trigger Configuration -->
+                <div style="margin-bottom: var(--space-6);">
+                    <h4 style="font-size: var(--font-size-sm); font-weight: 600; margin-bottom: var(--space-1);">Trigger
+                        Configuration</h4>
+                    <p style="font-size: var(--font-size-xs); color: var(--gray-500); margin-bottom: var(--space-4);">
+                        Set up when this automation should run. For status fields, you can use numeric comparisons to
+                        trigger based on values.</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                        <div class="form-group">
+                            <label class="form-label">Trigger Type</label>
+                            <select class="input">
+                                <option>Field Change</option>
+                                <option>Record Created</option>
+                                <option>Record Updated</option>
+                                <option>Record Deleted</option>
+                                <option>Scheduled</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Field * (required for field change)</label>
+                            <select class="input">
+                                <option>Select field (required)</option>
+                                <option>Status</option>
+                                <option>Priority</option>
+                                <option>Type</option>
+                                <option>Assignee</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Configuration -->
+                <div style="margin-bottom: var(--space-6);">
+                    <h4 style="font-size: var(--font-size-sm); font-weight: 600; margin-bottom: var(--space-1);">Action
+                        Configuration</h4>
+                    <p style="font-size: var(--font-size-xs); color: var(--gray-500); margin-bottom: var(--space-4);">
+                        Define what happens when the trigger condition is met. You can copy or move data between tables
+                        with field mappings.</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                        <div class="form-group">
+                            <label class="form-label">Action Type</label>
+                            <select class="input">
+                                <option>Copy to table (creates new record)</option>
+                                <option>Move to table</option>
+                                <option>Update record</option>
+                                <option>Delete record</option>
+                                <option>Send notification</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Target Table *</label>
+                            <select class="input">
+                                <option>Select target table</option>
+                                <option>Contacts</option>
+                                <option>Properties</option>
+                                <option>Deals</option>
+                                <option>Tasks</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Field Mappings -->
+                <div>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+                        <h4 style="font-size: var(--font-size-sm); font-weight: 600;">Field Mappings *</h4>
+                        <button class="btn-add-filter"
+                            style="display: flex; align-items: center; gap: var(--space-1); font-size: var(--font-size-xs); color: var(--primary-500); padding: var(--space-2) var(--space-3); border-radius: var(--radius-md);">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19" />
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                            </svg>
+                            Add Mapping
+                        </button>
+                    </div>
+                    <p style="font-size: var(--font-size-xs); color: var(--gray-500); margin-bottom: var(--space-4);">
+                        Map fields from source to target table. You can create new fields in the target table if needed.
+                    </p>
+
+                    <div
+                        style="background: var(--gray-50); border-radius: var(--radius-lg); padding: var(--space-8); text-align: center;">
+                        <p
+                            style="font-size: var(--font-size-sm); color: var(--gray-500); margin-bottom: var(--space-2);">
+                            No field mappings yet</p>
+                        <p style="font-size: var(--font-size-xs); color: var(--gray-400);">Select target table, then
+                            click "Map All Fields" or "Add Mapping" to start mapping fields.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" style="border-top: 1px solid var(--gray-200); padding-top: var(--space-4);">
+                <button class="btn btn-secondary" onclick="closeModal('createAutomationModal')">Cancel</button>
+                <button class="btn btn-blue">Create Automation</button>
             </div>
         </div>
     </div>
