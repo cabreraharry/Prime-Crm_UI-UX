@@ -1437,8 +1437,8 @@ body.dark-mode .page-content {
 }
 
 body.dark-mode .database-card {
-    background: var(--card-bg);
-    border-color: var(--card-border);
+    background: #1f1f1f;
+    border-color: #3a3a3a;
 }
 
 body.dark-mode .database-card:hover {
@@ -1446,15 +1446,15 @@ body.dark-mode .database-card:hover {
 }
 
 body.dark-mode .database-card-content h3 {
-    color: var(--text-primary);
+    color: #f5f5f5 !important;
 }
 
 body.dark-mode .database-card-content p {
-    color: var(--text-secondary);
+    color: #a3a3a3 !important;
 }
 
 body.dark-mode .section-title {
-    color: var(--text-secondary);
+    color: #a3a3a3 !important;
 }
 
 body.dark-mode .welcome-banner {
@@ -1641,7 +1641,7 @@ body.dark-mode .avatar {
 }
 
 body.dark-mode .database-card-time {
-    color: var(--text-muted);
+    color: #737373 !important;
 }
 
 body.dark-mode .kanban-column-name {

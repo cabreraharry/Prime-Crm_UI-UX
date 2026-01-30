@@ -179,12 +179,12 @@
    ============================================ */
 body.dark-mode {
   --app-bg: #0f0f0f;
-  --content-bg: #1a1a1a;
+  --content-bg: #141414;
   --card-bg: #1f1f1f;
-  --card-border: #2a2a2a;
+  --card-border: #333333;
   --text-primary: #f5f5f5;
-  --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
+  --text-secondary: #a3a3a3;
+  --text-muted: #737373;
 
   /* Override grays for dark mode */
   --gray-50: #1a1a1a;
@@ -198,8 +198,8 @@ body.dark-mode {
   --gray-800: #f5f5f5;
   --gray-900: #fafafa;
 
-  /* White/Black flip */
-  --white: #1a1a1a;
+  /* Keep white as an actual light color for cards */
+  --white: #1f1f1f;
   --black: #ffffff;
 
   /* Enhanced shadows for dark mode */
