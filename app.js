@@ -13,7 +13,104 @@ document.addEventListener('DOMContentLoaded', function () {
   initWelcomeBanner();
   initModalTabs();
   initDarkMode();
+  initMarketingCharts();
+  initMarketingTabs();
 });
+
+/* ============================================
+   MARKETING TABS (Phase 3)
+   ============================================ */
+function initMarketingTabs() {
+  // Combine both internal tabs and sidebar sub-items
+  const allTriggers = document.querySelectorAll('.marketing-tab, .nav-subitems .nav-subitem');
+  const views = document.querySelectorAll('.marketing-view');
+
+  if (allTriggers.length === 0) return;
+
+  allTriggers.forEach(trigger => {
+    trigger.addEventListener('click', function (e) {
+      if (this.tagName === 'A') e.preventDefault();
+
+      const viewId = this.dataset.view;
+      if (!viewId) return;
+
+      // Deactivate all triggers and views
+      allTriggers.forEach(t => t.classList.remove('active'));
+      views.forEach(v => v.classList.remove('active'));
+
+      // Activate clicked trigger (and its counterparts)
+      // e.g. clicking sidebar 'Emails' should also highlight top-bar 'Emails' if it exists
+      const relatedTriggers = document.querySelectorAll(`[data-view="${viewId}"]`);
+      relatedTriggers.forEach(t => t.classList.add('active'));
+
+      // Activate View
+      const targetView = document.getElementById(viewId);
+      if (targetView) targetView.classList.add('active');
+    });
+  });
+}
+
+
+/* ============================================
+   MARKETING CHARTS (Chart.js)
+   ============================================ */
+function initMarketingCharts() {
+  const ctxAcquisition = document.getElementById('acquisitionChart');
+  const ctxSources = document.getElementById('sourcesChart');
+
+  if (ctxAcquisition && window.Chart) {
+    new Chart(ctxAcquisition, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'New Leads',
+          data: [65, 59, 80, 81, 56, 125],
+          borderColor: '#3b82f6',
+          backgroundColor: 'rgba(59, 130, 246, 0.1)',
+          tension: 0.4,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.05)' } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  if (ctxSources && window.Chart) {
+    new Chart(ctxSources, {
+      type: 'doughnut',
+      data: {
+        labels: ['Organic', 'Social', 'Paid', 'Referral'],
+        datasets: [{
+          data: [45, 25, 20, 10],
+          backgroundColor: [
+            '#3b82f6',
+            '#8b5cf6',
+            '#f97316',
+            '#10b981'
+          ],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'right' }
+        },
+        cutout: '70%'
+      }
+    });
+  }
+}
 
 /* ============================================
    DARK MODE FUNCTIONALITY

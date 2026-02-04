@@ -462,3 +462,41 @@
         align-items: center;
     }
 }
+
+/* Prime Redesign Overrides */
+.feature-icon-blue {
+    background: rgba(90, 188, 201, 0.1);
+    color: var(--prime-teal);
+}
+
+.feature-icon-gold {
+    background: rgba(235, 253, 99, 0.2);
+    color: var(--navy-800);
+}
+
+.preview-nav-item.active {
+    background: var(--prime-lime);
+    box-shadow: 0 0 10px rgba(235, 253, 99, 0.2);
+}
+
+.text-gradient-gold {
+    background: linear-gradient(135deg, var(--prime-lime) 0%, var(--prime-teal) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn-primary {
+    background-color: var(--prime-lime);
+    color: var(--prime-navy);
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: #d9ea52;
+}
+
+.hero-badge {
+    background: rgba(27, 57, 82, 0.5);
+    border-color: var(--prime-teal);
+    color: var(--prime-teal);
+}

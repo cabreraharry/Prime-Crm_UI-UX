@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="app.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* Analytics Page Specific Styles */
         .workspace-tabs {
@@ -324,6 +325,20 @@
                     </span>
                     <span>Shared</span>
                 </a>
+
+                <!-- Marketing Section (Active) -->
+                <a href="analytics.html" class="nav-item active">
+                    <span class="nav-item-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5" />
+                            <path d="M8.5 8.5v.01" />
+                            <path d="M16 12l-2-2" />
+                        </svg>
+                    </span>
+                    <span>Marketing</span>
+                </a>
+
                 <a href="templates.html" class="nav-item">
                     <span class="nav-item-icon">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -348,7 +363,7 @@
                         </svg>
                     </button>
                 </div>
-                <a href="analytics.html" class="nav-item workspace-item active">
+                <a href="analytics.html" class="nav-item workspace-item">
                     <span class="workspace-dot" style="background: var(--blue-500);"></span>
                     <span>My First Workspace</span>
                     <div class="sidebar-workspace-actions">
@@ -442,46 +457,359 @@
                 <button class="welcome-close">×</button>
             </div>
 
-            <!-- Workspace Header -->
+            <!-- Marketing Header -->
             <div style="padding: var(--space-4) var(--space-6);">
-                <h1 style="font-size: var(--font-size-2xl); font-weight: 600;">My First Workspace</h1>
+                <h1 style="font-size: var(--font-size-2xl); font-weight: 600;">Marketing</h1>
+                <p style="color: var(--gray-500); margin-top: var(--space-1);">Manage campaigns, social media, and
+                    performance from one place.</p>
             </div>
 
-            <!-- Workspace Tabs -->
+            <!-- Marketing Tabs (Top Level) -->
             <div class="workspace-tabs">
-                <a href="analytics.html" class="workspace-tab active">Analytics</a>
-                <a href="workspace.html" class="workspace-tab">Bases</a>
-                <a href="#" class="workspace-tab">Settings</a>
+                <button class="workspace-tab active"
+                    onclick="switchMarketingView('marketing-overview')">Overview</button>
+                <button class="workspace-tab" onclick="switchMarketingView('marketing-social')">Social Planner</button>
+                <button class="workspace-tab" onclick="switchMarketingView('marketing-emails')">Emails</button>
+                <button class="workspace-tab" onclick="switchMarketingView('marketing-affiliates')">Affiliate
+                    Manager</button>
             </div>
 
             <!-- Analytics Layout -->
             <div class="analytics-layout">
                 <!-- Main Analytics Area -->
-                <div class="analytics-main">
-                    <div class="analytics-header">
-                        <div>
-                            <h2 class="analytics-title">Workspace Analytics</h2>
-                            <p class="analytics-subtitle">Build custom cards from any base and table.</p>
+                <div class="analytics-main glass-panel" style="padding-top: var(--space-4);">
+                    <div class="analytics-header" style="margin-bottom: var(--space-4);">
+                        <div class="analytics-actions" style="margin-left: auto;">
+                            <div class="date-range-picker">
+                                <span>Last 30 Days</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="6 9 12 15 18 9" />
+                                </svg>
+                            </div>
+                            <!-- "Create" Action can vary by tab, keeping generic for now or removing if not needed globally -->
                         </div>
-                        <button class="btn btn-blue" onclick="openModal('addAnalyticsCardModal')">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    </div>
+
+                    <!-- VIEW 1: OVERVIEW (Existing Bento Grid) -->
+                    <div id="marketing-overview" class="marketing-view active">
+                        <div class="bento-grid">
+                            <!-- KPI Cards -->
+                            <div class="bento-card kpi-card gradient-blue">
+                                <div class="kpi-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                    </svg>
+                                </div>
+                                <div class="kpi-content">
+                                    <span class="kpi-label">Total Leads</span>
+                                    <h3 class="kpi-value">2,543</h3>
+                                    <div class="kpi-trend positive">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                                            <polyline points="17 6 23 6 23 12" />
+                                        </svg>
+                                        <span>12.5%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bento-card kpi-card gradient-purple">
+                                <div class="kpi-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                                    </svg>
+                                </div>
+                                <div class="kpi-content">
+                                    <span class="kpi-label">Revenue</span>
+                                    <h3 class="kpi-value">$45,200</h3>
+                                    <div class="kpi-trend positive">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                                            <polyline points="17 6 23 6 23 12" />
+                                        </svg>
+                                        <span>8.2%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bento-card kpi-card gradient-orange">
+                                <div class="kpi-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                                    </svg>
+                                </div>
+                                <div class="kpi-content">
+                                    <span class="kpi-label">Conv. Rate</span>
+                                    <h3 class="kpi-value">3.2%</h3>
+                                    <div class="kpi-trend negative">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <polyline points="23 18 13.5 8.5 8.5 13.5 1 6" />
+                                            <polyline points="17 18 23 18 23 12" />
+                                        </svg>
+                                        <span>1.1%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Charts -->
+                            <div class="bento-card col-span-2 row-span-2 chart-card">
+                                <div class="chart-header">
+                                    <h4>Lead Acquisition</h4>
+                                    <button class="btn-icon-sm">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="1" />
+                                            <circle cx="12" cy="5" r="1" />
+                                            <circle cx="12" cy="19" r="1" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="acquisitionChart"></canvas>
+                                </div>
+                            </div>
+
+                            <div class="bento-card chart-card">
+                                <div class="chart-header">
+                                    <h4>Traffic Sources</h4>
+                                </div>
+                                <div class="chart-container">
+                                    <canvas id="sourcesChart"></canvas>
+                                </div>
+                            </div>
+
+                            <div class="bento-card col-span-3 table-card">
+                                <div class="chart-header">
+                                    <h4>Recent Campaigns</h4>
+                                    <a href="#" class="text-sm text-primary">View All</a>
+                                </div>
+                                <table class="simple-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Campaign</th>
+                                            <th>Status</th>
+                                            <th>Reach</th>
+                                            <th>Conv.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Summer Sale Promo</td>
+                                            <td><span class="badge badge-success">Active</span></td>
+                                            <td>12,450</td>
+                                            <td>4.5%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>New Housing Project</td>
+                                            <td><span class="badge badge-warning">Review</span></td>
+                                            <td>8,200</td>
+                                            <td>2.1%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Webinar Series</td>
+                                            <td><span class="badge badge-neutral">Ended</span></td>
+                                            <td>5,100</td>
+                                            <td>6.8%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VIEW 2: SOCIAL PLANNER -->
+                    <div id="marketing-social" class="marketing-view">
+                        <!-- Premium Connect Card -->
+                        <div class="connect-card-container"
+                            style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-xl); padding: var(--space-8); text-align: center; margin-bottom: var(--space-6); box-shadow: var(--shadow-sm);">
+                            <div class="connect-header" style="margin-bottom: var(--space-6);">
+                                <h3
+                                    style="font-size: var(--font-size-lg); font-weight: 600; margin-bottom: var(--space-2);">
+                                    Social Media Accounts</h3>
+                                <p style="color: var(--gray-500); font-size: var(--font-size-sm);">Connect your Facebook
+                                    and Instagram accounts to schedule posts, manage ads, and view analytics all in one
+                                    place.</p>
+                            </div>
+
+                            <div class="connect-icons-large"
+                                style="display: flex; justify-content: center; gap: var(--space-4); margin-bottom: var(--space-6);">
+                                <div
+                                    style="width: 48px; height: 48px; background: #E7F5FF; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #1877F2;">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                                    </svg>
+                                </div>
+                                <div
+                                    style="width: 48px; height: 48px; background: #FFEFF1; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #E1306C;">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: var(--space-4);">
+                                <h4
+                                    style="font-size: var(--font-size-md); font-weight: 600; margin-bottom: var(--space-2);">
+                                    Connect Facebook & Instagram</h4>
+                                <p
+                                    style="color: var(--gray-500); font-size: var(--font-size-sm); margin-bottom: var(--space-4);">
+                                    Connect your Facebook and Instagram accounts to schedule posts manage ads and view
+                                    analytics all in one place.</p>
+                                <button class="btn btn-primary"
+                                    style="background-color: #1877F2 !important; color: #fff !important; border: none !important; padding: 10px 24px; font-weight: 500;">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                                        style="margin-right: 8px;">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                                    </svg>
+                                    Connect with Facebook
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Secondary Nav / Content (Placeholder for future functionality) -->
+                        <div class="calendar-section" style="opacity: 0.6; pointer-events: none; filter: grayscale(1);">
+                            <!-- Calendar Strip (Existing) -->
+                            <div class="calendar-strip">
+                                <div class="calendar-day active">
+                                    <span class="day-name">Mon</span>
+                                    <span class="day-num">12</span>
+                                </div>
+                                <div class="calendar-day">
+                                    <span class="day-name">Tue</span>
+                                    <span class="day-num">13</span>
+                                </div>
+                                <div class="calendar-day">
+                                    <span class="day-name">Wed</span>
+                                    <span class="day-num">14</span>
+                                </div>
+                                <div class="calendar-day">
+                                    <span class="day-name">Thu</span>
+                                    <span class="day-num">15</span>
+                                </div>
+                                <div class="calendar-day">
+                                    <span class="day-name">Fri</span>
+                                    <span class="day-num">16</span>
+                                </div>
+                            </div>
+                            <!-- Posts Grid (Existing) -->
+                            <div class="social-grid">
+                                <div class="post-card">
+                                    <!-- ... -->
+                                    <p>Social Planner will live here. We'll add functionality and layouts next.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VIEW 3: EMAILS -->
+                    <div id="marketing-emails" class="marketing-view">
+                        <div class="email-split-view">
+                            <!-- Email List -->
+                            <div class="email-list-panel">
+                                <div class="email-list-header">
+                                    <h4>Campaigns</h4>
+                                    <button class="btn-icon-sm"><svg width="16" height="16" viewBox="0 0 24 24"
+                                            fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="12" y1="5" x2="12" y2="19" />
+                                            <line x1="5" y1="12" x2="19" y2="12" />
+                                        </svg></button>
+                                </div>
+                                <div class="email-item active">
+                                    <div class="email-status-dot sent"></div>
+                                    <div class="email-info">
+                                        <h5>July Newsletter</h5>
+                                        <p>Sent • 2,405 recipients</p>
+                                    </div>
+                                    <span class="email-date">Yesterday</span>
+                                </div>
+                                <div class="email-item">
+                                    <div class="email-status-dot draft"></div>
+                                    <div class="email-info">
+                                        <h5>Open House Invite: 123 Main St</h5>
+                                        <p>Draft • Last edited 2h ago</p>
+                                    </div>
+                                    <span class="email-date">Today</span>
+                                </div>
+                                <div class="email-item">
+                                    <div class="email-status-dot sent"></div>
+                                    <div class="email-info">
+                                        <h5>Market Report Q2</h5>
+                                        <p>Sent • 5,100 recipients</p>
+                                    </div>
+                                    <span class="email-date">Jun 28</span>
+                                </div>
+                            </div>
+
+                            <!-- Email Preview / Stats -->
+                            <div class="email-preview-panel">
+                                <div class="preview-header">
+                                    <h3>July Newsletter</h3>
+                                    <div class="preview-actions">
+                                        <button class="btn btn-ghost text-sm">Duplicate</button>
+                                        <button class="btn btn-ghost text-sm">View Report</button>
+                                    </div>
+                                </div>
+                                <div class="email-stats-row">
+                                    <div class="stat-circle-container">
+                                        <div class="stat-circle" style="--p:45; --c:#3b82f6;">
+                                            <span>45%</span>
+                                        </div>
+                                        <span class="stat-label">Open Rate</span>
+                                    </div>
+                                    <div class="stat-circle-container">
+                                        <div class="stat-circle" style="--p:12; --c:#10b981;">
+                                            <span>12%</span>
+                                        </div>
+                                        <span class="stat-label">Click Rate</span>
+                                    </div>
+                                    <div class="stat-divider"></div>
+                                    <div class="stat-text">
+                                        <h5>1,082</h5>
+                                        <span>Opened</span>
+                                    </div>
+                                    <div class="stat-text">
+                                        <h5>288</h5>
+                                        <span>Clicked</span>
+                                    </div>
+                                </div>
+                                <div class="email-mockup">
+                                    <div class="mockup-header">Subject: Your Monthly Real Estate Update 🏡</div>
+                                    <div class="mockup-body">
+                                        <div class="mockup-hero"></div>
+                                        <div class="mockup-lines"></div>
+                                        <div class="mockup-lines"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Action Button -->
+                    <div class="fab-container">
+                        <button class="fab-btn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <line x1="12" y1="5" x2="12" y2="19" />
                                 <line x1="5" y1="12" x2="19" y2="12" />
                             </svg>
-                            Add card
                         </button>
                     </div>
 
-                    <!-- Empty State -->
-                    <div class="analytics-empty">
-                        <p class="analytics-empty-text">
-                            No analytics cards yet.
-                            <span class="analytics-empty-link" onclick="openModal('addAnalyticsCardModal')">Add your
-                                first card</span>
-                            to start visualizing data.
-                        </p>
-                    </div>
+                    <!-- End of Views -->
+
                 </div>
 
                 <!-- Activity Panel -->
@@ -609,6 +937,38 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        // Tab Switching Logic
+        function switchMarketingView(viewId) {
+            // Update Tab Styling
+            document.querySelectorAll('.workspace-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Hide all views
+            document.querySelectorAll('.marketing-view').forEach(view => {
+                view.style.display = 'none';
+                view.classList.remove('active');
+            });
+
+            // Show selected view
+            const selectedView = document.getElementById(viewId);
+            if (selectedView) {
+                selectedView.style.display = 'block';
+                // Small timeout to allow display:block to apply before opacity transition if we had one
+                setTimeout(() => selectedView.classList.add('active'), 10);
+            }
+        }
+
+        // Initialize first view
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ensure Overview is shown by default if not already
+            if (document.querySelector('.marketing-view.active') === null) {
+                switchMarketingView('marketing-overview');
+            }
+        });
+    </script>
 </body>
 
 </html>

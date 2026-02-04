@@ -7,102 +7,83 @@
    CSS VARIABLES
    ============================================ */
 :root {
-  /* ===== BLACK SIDEBAR THEME ===== */
-  --sidebar-bg: #0a0a0a;
-  --sidebar-border: #1f1f1f;
-  --sidebar-text: #a1a1aa;
+  /* ===== PRIME BRAND PALETTE ===== */
+  --prime-navy: #1B3952;
+  --prime-lime: #EBFD63;
+  --prime-teal: #5ABCC9;
+
+  /* ===== SIDEBAR THEME ===== */
+  --sidebar-bg: var(--prime-navy);
+  --sidebar-border: #112638;
+  --sidebar-text: #94a3b8;
   --sidebar-text-hover: #ffffff;
-  --sidebar-active: #22c55e;
+  --sidebar-active: var(--prime-lime);
+  --sidebar-active-text: var(--prime-navy);
 
-  /* Neutral Dark (Dark Elements) */
-  --navy-900: #0a0a0a;
-  --navy-800: #141414;
-  --navy-700: #1f1f1f;
-  --navy-600: #2a2a2a;
-  --navy-500: #404040;
-  --navy-400: #737373;
-  --navy-300: #a3a3a3;
-  --navy-200: #d4d4d4;
-  --navy-100: #f5f5f5;
-  --navy-50: #fafafa;
+  /* Neutral Dark (Navy Tinted) */
+  --navy-900: #0f172a;
+  --navy-800: #1e293b;
+  --navy-700: #334155;
+  --navy-600: #475569;
+  --navy-500: #64748b;
+  --navy-400: #94a3b8;
+  --navy-300: #cbd5e1;
+  --navy-200: #e2e8f0;
+  --navy-100: #f1f5f9;
+  --navy-50: #f8fafc;
 
-  /* ===== PLAYFUL COLOR PALETTE ===== */
-  /* Primary Blue */
-  --primary-500: #2563eb;
-  --primary-400: #3b82f6;
-  --primary-600: #1d4ed8;
-  --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  /* ===== MAPPED PALETTE ===== */
+  /* Primary (Navy) */
+  --primary-500: var(--prime-navy);
+  --primary-400: #254a66;
+  --primary-600: #12283a;
+  --primary-gradient: linear-gradient(135deg, var(--prime-navy) 0%, #254a66 100%);
 
-  /* Green Brand */
-  --blue-500: #22c55e;
-  --blue-400: #4ade80;
-  --blue-600: #16a34a;
-  --blue-700: #15803d;
-  --blue-50: #f0fdf4;
-  --blue-100: #dcfce7;
-  --blue-300: #86efac;
-  --blue-200: #bbf7d0;
-  --green-gradient: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  /* Green/Success -> Prime Lime */
+  /* We keep semantic names but map them to brand */
+  --blue-500: var(--prime-teal);
+  --blue-400: #7cd0db;
+  --blue-600: #439fa8;
+  --blue-700: #327a82;
+  --blue-50: #f0fdfa;
+  /* Teal-ish tint */
+  --blue-100: #ccfbf1;
+  --blue-300: #5eead4;
+  --blue-200: #99f6e4;
+  --green-gradient: linear-gradient(135deg, var(--prime-lime) 0%, #dcfce7 100%);
+  /* Lighter lime */
 
-  /* Orange */
-  --orange-500: #f97316;
-  --orange-400: #fb923c;
-  --orange-600: #ea580c;
-  --orange-gradient: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
-
-  /* Purple */
-  --purple-500: #8b5cf6;
-  --purple-400: #a78bfa;
-  --purple-600: #7c3aed;
-  --purple-gradient: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
-
-  /* Teal */
-  --teal-500: #14b8a6;
-  --teal-400: #2dd4bf;
-  --teal-600: #0d9488;
-  --teal-gradient: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
-
-  /* Pink */
-  --pink-500: #ec4899;
-  --pink-400: #f472b6;
-  --pink-600: #db2777;
-  --pink-gradient: linear-gradient(135deg, #f472b6 0%, #ec4899 100%);
-
-  /* Indigo */
-  --indigo-500: #6366f1;
-  --indigo-400: #818cf8;
-  --indigo-600: #4f46e5;
-  --indigo-gradient: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
-
-  /* Gold Accent */
-  --gold-500: #f59e0b;
-  --gold-400: #fbbf24;
-  --gold-600: #d97706;
-  --gold-gradient: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  /* Gold -> Also Lime (High Energy) or Warning */
+  --gold-500: var(--prime-lime);
+  --gold-400: #f3fe8c;
+  --gold-600: #d2e635;
+  --gold-gradient: linear-gradient(135deg, #f3fe8c 0%, #EBFD63 100%);
 
   /* Status Colors */
   --success: #22c55e;
+  /* Keep standard success green for actual status */
   --success-light: #dcfce7;
   --warning: #f59e0b;
   --warning-light: #fef3c7;
   --error: #ef4444;
   --error-light: #fee2e2;
-  --info: #3b82f6;
+  --info: var(--prime-teal);
   --info-light: #dbeafe;
 
   /* Neutral */
   --white: #ffffff;
   --black: #000000;
-  --gray-50: #f9fafb;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-300: #d1d5db;
-  --gray-400: #9ca3af;
-  --gray-500: #6b7280;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  --gray-800: #1f2937;
-  --gray-900: #111827;
+  --gray-50: #f8fafc;
+  /* Cool grey */
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
 
   /* Typography */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -129,16 +110,17 @@
   --space-16: 4rem;
   --space-20: 5rem;
 
-  /* Border Radius - Premium */
+  /* Border Radius - Modern */
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
-  --radius-2xl: 1.25rem;
-  --radius-3xl: 1.5rem;
+  --radius-2xl: 1.5rem;
+  /* Increased for modern feel */
+  --radius-3xl: 2rem;
   --radius-full: 9999px;
 
-  /* Shadows - Premium with Glow */
+  /* Shadows */
   --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -146,65 +128,58 @@
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
-  --shadow-glow-gold: 0 0 30px rgba(245, 158, 11, 0.3);
-  --shadow-glow-green: 0 0 30px rgba(34, 197, 94, 0.25);
-  --shadow-glow-blue: 0 0 30px rgba(59, 130, 246, 0.25);
-  --shadow-glow-purple: 0 0 30px rgba(139, 92, 246, 0.25);
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 6px 16px rgba(0, 0, 0, 0.06);
-  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.12), 0 16px 48px rgba(0, 0, 0, 0.08);
+  --shadow-glow-lime: 0 0 20px rgba(235, 253, 99, 0.4);
+  --shadow-glow-teal: 0 0 20px rgba(90, 188, 201, 0.3);
 
-  /* Transitions - Premium Smooth */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 6px 16px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 12px 32px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(27, 57, 82, 0.06);
+
+  /* Transitions */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
-  --transition-spring: 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
   /* Sidebar */
   --sidebar-width: 260px;
   --sidebar-collapsed-width: 72px;
 
-  /* App background (for dark mode transitions) */
-  --app-bg: #f0f2f5;
+  /* App background */
+  --app-bg: #f1f5f9;
   --content-bg: #ffffff;
   --card-bg: #ffffff;
-  --card-border: var(--gray-100);
-  --text-primary: var(--gray-900);
-  --text-secondary: var(--gray-600);
-  --text-muted: var(--gray-400);
+  --card-border: var(--gray-200);
 }
 
 /* ============================================
    DARK MODE THEME
    ============================================ */
 body.dark-mode {
-  --app-bg: #0f0f0f;
-  --content-bg: #141414;
-  --card-bg: #1f1f1f;
-  --card-border: #333333;
-  --text-primary: #f5f5f5;
-  --text-secondary: #a3a3a3;
-  --text-muted: #737373;
+  --app-bg: #0b1120;
+  /* Very dark navy */
+  --content-bg: #1e293b;
+  --card-bg: #1e293b;
+  --card-border: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
 
-  /* Override grays for dark mode */
-  --gray-50: #1a1a1a;
-  --gray-100: #262626;
-  --gray-200: #333333;
-  --gray-300: #404040;
-  --gray-400: #737373;
-  --gray-500: #a3a3a3;
-  --gray-600: #d4d4d4;
-  --gray-700: #e5e5e5;
-  --gray-800: #f5f5f5;
-  --gray-900: #fafafa;
+  /* Override grays */
+  --gray-50: #0f172a;
+  --gray-100: #1e293b;
+  --gray-200: #334155;
+  --gray-300: #475569;
+  --gray-400: #94a3b8;
+  --gray-500: #cbd5e1;
 
-  /* Keep white as an actual light color for cards */
-  --white: #1f1f1f;
+  --white: #1e293b;
   --black: #ffffff;
 
-  /* Enhanced shadows for dark mode */
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 6px 16px rgba(0, 0, 0, 0.4);
-  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.5), 0 16px 48px rgba(0, 0, 0, 0.4);
+  --sidebar-bg: #0b1120;
+  --sidebar-border: #1e293b;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 /* ============================================
