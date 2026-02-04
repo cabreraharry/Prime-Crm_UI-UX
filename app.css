@@ -2199,6 +2199,7 @@ body.dark-mode .date-range-picker:hover {
 body.dark-mode .text-primary {
     color: var(--primary-400);
 }
+
 /* List Item Icon Colors - Prime Design System */
 .list-item-icon {
     display: flex;
@@ -2241,14 +2242,17 @@ body.dark-mode .text-primary {
     background: rgba(27, 57, 82, 0.1);
     color: var(--prime-navy);
 }
+
 .database-card-icon.icon-teal {
     background: rgba(90, 188, 201, 0.1);
     color: var(--prime-teal);
 }
+
 .database-card-icon.icon-green {
     background: rgba(16, 185, 129, 0.1);
     color: var(--success);
 }
+
 .database-card-icon.icon-gold {
     background: rgba(235, 253, 99, 0.2);
     color: var(--navy-900);
@@ -2273,7 +2277,8 @@ body.dark-mode .text-primary {
 }
 
 .grid-sidebar-create:hover {
-    background: #d9ec50; /* slightly darker lime */
+    background: #d9ec50;
+    /* slightly darker lime */
 }
 
 .grid-sidebar-search input {
@@ -2301,7 +2306,8 @@ body.dark-mode .text-primary {
 }
 
 .grid-header {
-    background: var(--white); /* Keep header light for contrast */
+    background: var(--white);
+    /* Keep header light for contrast */
 }
 
 .grid-table th {

@@ -71,6 +71,8 @@
   --info-light: #dbeafe;
 
   /* Neutral */
+  --static-white: #ffffff;
+  /* Always white regardless of theme */
   --white: #ffffff;
   --black: #000000;
   --gray-50: #f8fafc;
@@ -164,13 +166,17 @@ body.dark-mode {
   --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
 
-  /* Override grays */
+  /* Override grays - Invert the scale */
   --gray-50: #0f172a;
   --gray-100: #1e293b;
   --gray-200: #334155;
   --gray-300: #475569;
-  --gray-400: #94a3b8;
-  --gray-500: #cbd5e1;
+  --gray-400: #64748b;
+  --gray-500: #94a3b8;
+  --gray-600: #cbd5e1;
+  --gray-700: #e2e8f0;
+  --gray-800: #f1f5f9;
+  --gray-900: #f8fafc;
 
   --white: #1e293b;
   --black: #ffffff;
@@ -512,7 +518,7 @@ h6 {
 
 .btn-blue {
   background: var(--blue-500);
-  color: var(--white);
+  color: var(--static-white);
   font-weight: 500;
 }
 
@@ -596,7 +602,7 @@ h6 {
 
 .badge-blue {
   background: var(--blue-500);
-  color: var(--white);
+  color: var(--static-white);
 }
 
 .badge-gold {
@@ -606,7 +612,7 @@ h6 {
 
 .badge-success {
   background: var(--success);
-  color: var(--white);
+  color: var(--static-white);
 }
 
 .badge-warning {
@@ -616,7 +622,7 @@ h6 {
 
 .badge-error {
   background: var(--error);
-  color: var(--white);
+  color: var(--static-white);
 }
 
 .badge-gray {
@@ -747,7 +753,7 @@ h6 {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  color: var(--white);
+  color: var(--static-white);
   font-weight: 600;
   font-size: var(--font-size-lg);
 }
@@ -794,7 +800,7 @@ h6 {
 
 .nav-item.active {
   background: linear-gradient(90deg, rgba(34, 197, 94, 0.2) 0%, transparent 100%);
-  color: var(--white);
+  color: var(--static-white);
   border-left: 3px solid var(--blue-500);
 }
 
