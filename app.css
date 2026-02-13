@@ -974,24 +974,30 @@ select.input {
 }
 
 /* Colorful Tab Variants */
-.data-tab[data-tab="contacts"].active {
+/* Colorful Tab Variants - UNIFIED to Primary Blue */
+.data-tab.active {
     background: var(--primary-gradient);
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    color: var(--static-white);
+    border-color: transparent;
 }
 
-.data-tab[data-tab="properties"].active {
-    background: var(--green-gradient);
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
-}
-
-.data-tab[data-tab="deals"].active {
-    background: var(--orange-gradient);
-    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
-}
-
+/* Ensure specific tab selectors don't override with old colors */
+.data-tab[data-tab="contacts"].active,
+.data-tab[data-tab="properties"].active,
+.data-tab[data-tab="deals"].active,
 .data-tab[data-tab="tasks"].active {
-    background: var(--pink-gradient);
-    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
+    background: var(--primary-gradient);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    color: var(--static-white);
+}
+
+/* Dark Mode Specific Visibility Fix */
+body.dark-mode .data-tab.active {
+    color: var(--static-white) !important;
+    background: var(--primary-gradient);
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+    /* Enhanced glow for dark mode */
 }
 
 /* Toolbar */
